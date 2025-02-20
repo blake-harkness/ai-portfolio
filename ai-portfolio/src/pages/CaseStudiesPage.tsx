@@ -6,53 +6,110 @@ const CaseStudiesPage = () => {
 
   const industries = [
     { value: 'all', label: 'All Industries' },
-    { value: 'healthcare', label: 'Healthcare' },
+    { value: 'education', label: 'Education' },
+    { value: 'retail', label: 'Retail' },
+    { value: 'utilities', label: 'Utilities' },
     { value: 'manufacturing', label: 'Manufacturing' },
-    { value: 'finance', label: 'Finance' },
-    { value: 'retail', label: 'Retail' }
+    { value: 'business', label: 'Business Solutions' }
   ];
 
   const caseStudies = [
     {
       id: 1,
-      title: "AI-Powered Customer Service Platform",
-      category: "Machine Learning",
-      industry: "retail",
-      description: "Developed an intelligent customer service platform that reduced response times by 60% using NLP.",
-      image: "/images/case-study-1.jpg",
-      technologies: ["Python", "TensorFlow", "React", "AWS"],
+      title: "NCEA Navigator AI-Powered Tutoring",
+      category: "Education AI",
+      industry: "education",
+      description: "Developed an intelligent tutoring system to help students navigate NCEA studies with personalized learning paths and instant feedback.",
+      image: "/images/nceanav.jpg",
+      technologies: ["Python", "OpenAI GPT", "React", "MongoDB"],
       results: [
-        "60% reduction in response time",
-        "85% customer satisfaction rate",
-        "40% cost reduction in customer service operations"
+        "Improved student engagement by 40%",
+        "85% of students reported better understanding of subjects",
+        "Reduced tutoring costs by 60% for families"
       ]
     },
     {
       id: 2,
-      title: "Computer Vision for Quality Control",
-      category: "Computer Vision",
-      industry: "manufacturing",
-      description: "Implemented a computer vision system for manufacturing quality control, achieving 99.9% accuracy.",
-      image: "/images/case-study-2.jpg",
-      technologies: ["PyTorch", "OpenCV", "Docker", "Azure"],
+      title: "Glow 4 Less - AI Beauty Product Analysis",
+      category: "E-commerce AI",
+      industry: "retail",
+      description: "Created an AI-powered platform that analyzes beauty products to find more affordable alternatives with similar ingredients and effectiveness.",
+      image: "/images/glow4less.jpg",
+      technologies: ["Python", "Natural Language Processing", "React", "PostgreSQL"],
       results: [
-        "99.9% defect detection accuracy",
-        "75% reduction in manual inspection time",
-        "50% decrease in defective products"
+        "Average customer savings of 45%",
+        "90% match accuracy for product alternatives",
+        "User base growth of 200% in 6 months"
       ]
     },
     {
       id: 3,
-      title: "Predictive Analytics Dashboard",
-      category: "Data Science",
-      industry: "finance",
-      description: "Created a predictive analytics dashboard for business intelligence, improving decision-making efficiency.",
-      image: "/images/case-study-3.jpg",
-      technologies: ["Python", "Scikit-learn", "D3.js", "PostgreSQL"],
+      title: "Electricity Code QnA Bot",
+      category: "Natural Language Processing",
+      industry: "utilities",
+      description: "Built an intelligent chatbot system that answers queries about electricity codes and regulations, providing instant accurate information to technicians.",
+      image: "/images/electricityrag.jpg",
+      technologies: ["Python", "BERT", "FastAPI", "ElasticSearch"],
       results: [
-        "30% improvement in forecast accuracy",
-        "25% increase in revenue",
-        "40% reduction in inventory costs"
+        "95% query accuracy rate",
+        "70% reduction in manual code lookup time",
+        "24/7 instant access to code information"
+      ]
+    },
+    {
+      id: 4,
+      title: "Seasonal Forecasting System",
+      category: "Predictive Analytics",
+      industry: "retail",
+      description: "Implemented a machine learning system for seasonal demand forecasting, helping businesses optimize inventory and staffing levels.",
+      image: "/images/sarimaxforecast.jpg",
+      technologies: ["Python", "TensorFlow", "Power BI", "AWS"],
+      results: [
+        "85% forecast accuracy",
+        "30% reduction in excess inventory",
+        "25% improvement in staff scheduling efficiency"
+      ]
+    },
+    {
+      id: 5,
+      title: "CNC Parts Quality Control Vision System",
+      category: "Computer Vision",
+      industry: "manufacturing",
+      description: "Developed a computer vision system for automated quality control of CNC-manufactured parts, detecting defects in real-time.",
+      image: "/images/cncvision.jpg",
+      technologies: ["Python", "OpenCV", "PyTorch", "Docker"],
+      results: [
+        "99.5% defect detection accuracy",
+        "80% reduction in manual inspection time",
+        "60% decrease in defective parts reaching customers"
+      ]
+    },
+    {
+      id: 6,
+      title: "Automated Invoice Processing System",
+      category: "Process Automation",
+      industry: "business",
+      description: "Created an automated system that extracts data from invoices and logs them directly into Excel spreadsheets, eliminating manual data entry.",
+      image: "/images/invoiceautomation.jpg",
+      technologies: ["Python", "OCR", "Azure", "Microsoft Excel API"],
+      results: [
+        "95% reduction in manual data entry time",
+        "99.9% accuracy in data extraction",
+        "ROI achieved within 3 months"
+      ]
+    },
+    {
+      id: 7,
+      title: "Internal HR Policy Chatbot",
+      category: "Process Automation",
+      industry: "business",
+      description: "Created an automated system that extracts data from invoices and logs them directly into Excel spreadsheets, eliminating manual data entry.",
+      image: "/images/hrchatbot.jpg",
+      technologies: ["Python", "OCR", "Azure", "Microsoft Excel API"],
+      results: [
+        "95% reduction in manual data entry time",
+        "99.9% accuracy in data extraction",
+        "ROI achieved within 3 months"
       ]
     }
   ];
@@ -60,26 +117,26 @@ const CaseStudiesPage = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      position: "CTO, HealthTech Solutions",
-      company: "HealthTech Solutions",
-      content: "Working with this team was transformative for our business. The AI solutions they implemented exceeded our expectations and delivered real value to our customers.",
+      name: "David Wilson",
+      position: "Head of Department",
+      company: "Wellington High School",
+      content: "The NCEA Navigator has transformed how our students approach their studies. The personalized learning paths have made a significant difference in student achievement.",
       image: "/images/testimonial-1.jpg"
     },
     {
       id: 2,
-      name: "Michael Chen",
-      position: "Director of Innovation",
-      company: "Global Manufacturing Corp",
-      content: "The computer vision system revolutionized our quality control process. The attention to detail and technical expertise were outstanding.",
+      name: "Lisa Chen",
+      position: "Operations Manager",
+      company: "Precision Parts NZ",
+      content: "The computer vision system has revolutionized our quality control process. We've seen a dramatic reduction in defects and improved customer satisfaction.",
       image: "/images/testimonial-2.jpg"
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
-      position: "Head of Digital Transformation",
-      company: "FinTech Innovations",
-      content: "The predictive analytics dashboard they built has become an essential tool for our decision-making process. Highly recommended!",
+      name: "James Thompson",
+      position: "Financial Controller",
+      company: "Thompson & Associates",
+      content: "The automated invoice processing system has saved us countless hours of manual data entry. It's incredibly accurate and has streamlined our entire accounts payable process.",
       image: "/images/testimonial-3.jpg"
     }
   ];
@@ -174,6 +231,79 @@ const CaseStudiesPage = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section skills-section">
+        <div className="container">
+          <h2 className="section-title">Skills & Expertise</h2>
+          <div className="skills-container">
+            <div className="skills-category">
+              <h3>AI & Machine Learning</h3>
+              <div className="skills-grid">
+                <div className="skill-item">
+                  <h4>Deep Learning</h4>
+                  <ul>
+                    <li>TensorFlow</li>
+                    <li>PyTorch</li>
+                    <li>Neural Networks</li>
+                    <li>Computer Vision</li>
+                  </ul>
+                </div>
+                <div className="skill-item">
+                  <h4>Natural Language Processing</h4>
+                  <ul>
+                    <li>BERT/GPT Models</li>
+                    <li>Text Classification</li>
+                    <li>Named Entity Recognition</li>
+                    <li>Sentiment Analysis</li>
+                  </ul>
+                </div>
+                <div className="skill-item">
+                  <h4>Machine Learning</h4>
+                  <ul>
+                    <li>Scikit-learn</li>
+                    <li>Statistical Analysis</li>
+                    <li>Feature Engineering</li>
+                    <li>Model Optimization</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div className="skills-category">
+              <h3>Development & Cloud</h3>
+              <div className="skills-grid">
+                <div className="skill-item">
+                  <h4>Frontend Development</h4>
+                  <ul>
+                    <li>React</li>
+                    <li>TypeScript</li>
+                    <li>HTML/CSS</li>
+                    <li>Modern UI/UX</li>
+                  </ul>
+                </div>
+                <div className="skill-item">
+                  <h4>Backend Development</h4>
+                  <ul>
+                    <li>Python</li>
+                    <li>Node.js</li>
+                    <li>RESTful APIs</li>
+                    <li>Database Design</li>
+                  </ul>
+                </div>
+                <div className="skill-item">
+                  <h4>Cloud & DevOps</h4>
+                  <ul>
+                    <li>AWS Services</li>
+                    <li>Docker</li>
+                    <li>CI/CD</li>
+                    <li>Microservices</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

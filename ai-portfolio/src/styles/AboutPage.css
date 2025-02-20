@@ -99,6 +99,29 @@
   margin-bottom: 0.5rem;
 }
 
+.certifications {
+  margin-top: 3rem;
+}
+
+.certification-item {
+  background-color: var(--accent-color);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+}
+
+.certification-item h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.certification-item p {
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
 @media (max-width: 768px) {
   .about-grid {
     grid-template-columns: 1fr;

@@ -1,46 +1,24 @@
 import Hero from '../components/Hero';
-import { FaBrain, FaChartLine, FaRobot } from 'react-icons/fa';
+import { FaGraduationCap, FaLightbulb, FaTools } from 'react-icons/fa';
 import '../styles/HomePage.css';
+import '../styles/AboutPage.css';
 
 const HomePage = () => {
-  const aiCapabilities = [
+  const services = [
     {
-      icon: <FaBrain />,
-      title: "Machine Learning",
-      description: "Developing intelligent systems that learn and adapt from data, providing predictive insights and automation."
+      icon: <FaGraduationCap />,
+      title: "Educating",
+      description: "Empowering your team with AI knowledge and best practices to drive innovation from within."
     },
     {
-      icon: <FaRobot />,
-      title: "Natural Language Processing",
-      description: "Building systems that understand and process human language for improved communication and analysis."
+      icon: <FaLightbulb />,
+      title: "Consulting",
+      description: "Strategic guidance on implementing AI solutions that align with your business objectives."
     },
     {
-      icon: <FaChartLine />,
-      title: "Predictive Analytics",
-      description: "Leveraging data to forecast trends and make informed business decisions."
-    }
-  ];
-
-  const processSteps = [
-    {
-      number: "01",
-      title: "Discovery & Analysis",
-      description: "Understanding your business needs and challenges through in-depth analysis and consultation."
-    },
-    {
-      number: "02",
-      title: "Solution Design",
-      description: "Creating tailored AI solutions that align with your objectives and technical requirements."
-    },
-    {
-      number: "03",
-      title: "Development & Testing",
-      description: "Building and rigorously testing solutions to ensure reliability and performance."
-    },
-    {
-      number: "04",
-      title: "Deployment & Support",
-      description: "Seamless implementation and ongoing support to ensure long-term success."
+      icon: <FaTools />,
+      title: "Building",
+      description: "Developing custom AI solutions that automate processes and drive business growth."
     }
   ];
 
@@ -48,52 +26,41 @@ const HomePage = () => {
     <div className="page home-page">
       <Hero />
       
-      <section className="section features">
+      <section className="section services-section">
         <div className="container">
-          <h2 className="section-title">What I Do</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <h3>AI Development</h3>
-              <p>Building intelligent solutions using cutting-edge AI technologies and machine learning algorithms.</p>
-            </div>
-            <div className="feature-card">
-              <h3>Web Development</h3>
-              <p>Creating modern, responsive web applications with the latest frameworks and best practices.</p>
-            </div>
-            <div className="feature-card">
-              <h3>Data Science</h3>
-              <p>Transforming raw data into actionable insights through analysis and visualization.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section ai-capabilities">
-        <div className="container">
-          <h2 className="section-title">AI Capabilities</h2>
-          <div className="capabilities-grid">
-            {aiCapabilities.map((capability, index) => (
-              <div key={index} className="capability-card">
-                <div className="icon">{capability.icon}</div>
-                <h3>{capability.title}</h3>
-                <p>{capability.description}</p>
+          <h2 className="section-title">My Services</h2>
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <div key={index} className="service-card">
+                <div className="service-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section process">
+      <section className="section about-section">
         <div className="container">
-          <h2 className="section-title">My Process</h2>
-          <div className="process-grid">
-            {processSteps.map((step, index) => (
-              <div key={index} className="process-card">
-                <div className="step-number">{step.number}</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
+          <div className="about-content-wrapper">
+            <div className="about-text">
+              <h2 className="section-title">About Me</h2>
+              <div className="about-description">
+                <p>
+                  As an AI Engineer and Developer, I specialize in creating innovative solutions that 
+                  bridge the gap between cutting-edge AI technology and real-world business needs. 
+                  With a strong foundation in both artificial intelligence and software development, I
+                  help businesses leverage the power of AI to drive growth and efficiency.
+                </p>
+                <p>
+                  My approach combines technical expertise with practical business understanding, ensuring that 
+                  every solution not only employs advanced technology but also delivers tangible value. Whether it's 
+                  developing intelligent automation systems, implementing machine learning models, or creating 
+                  AI-powered applications, I focus on delivering results that make a real difference.
+                </p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>

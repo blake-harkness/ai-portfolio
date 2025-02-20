@@ -9,6 +9,45 @@
   color: var(--text-color);
 }
 
+/* Services Section */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.service-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.service-card p {
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
 /* Features Section */
 .features-grid {
   display: grid;
@@ -38,6 +77,37 @@
   color: var(--text-color);
   opacity: 0.8;
   line-height: 1.6;
+}
+
+/* About Section */
+.about-section {
+  background-color: var(--accent-color);
+  padding: 6rem 0;
+}
+
+.about-content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-text {
+  text-align: center;
+}
+
+.about-description {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.about-description p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.about-description p:last-child {
+  margin-bottom: 0;
 }
 
 /* AI Capabilities Section */
@@ -159,6 +229,10 @@
 }
 
 @media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -170,9 +244,7 @@
     margin-bottom: 2rem;
   }
 
-  .features-grid,
-  .capabilities-grid,
-  .impact-grid {
+  .services-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -183,5 +255,10 @@
 
   .home-page .section {
     padding: 3rem 0;
+  }
+
+  .about-description p {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 } 

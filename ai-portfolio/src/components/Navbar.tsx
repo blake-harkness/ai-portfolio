@@ -38,6 +38,15 @@ const Navbar = () => {
           </li>
           <li>
             <Link 
+              to="/how-i-can-help" 
+              className={isActive('/how-i-can-help') ? 'active' : ''}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              How I Can Help
+            </Link>
+          </li>
+          <li>
+            <Link 
               to="/case-studies" 
               className={isActive('/case-studies') ? 'active' : ''}
               onClick={() => setIsMenuOpen(false)}
