@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import '../styles/ContactPage.css';
 
+// Initialize EmailJS with your public key
+emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+
 const ContactPage = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,17 +26,13 @@ const ContactPage = () => {
     setStatus({ submitting: true, submitted: false, error: null });
 
     try {
-      await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        {
-          to_email: 'blake.ac.harkness@gmail.com',
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      if (!formRef.current) return;
+
+      await emailjs.sendForm(
+        'service_00loe13', // Replace with your EmailJS service ID
+        'template_gnfda74', // Replace with your EmailJS template ID
+        formRef.current,
+        'ZDtqDbMMEJiYHLoox' // Replace with your EmailJS public key
       );
 
       setStatus({ submitting: false, submitted: true, error: null });
@@ -43,6 +43,7 @@ const ContactPage = () => {
         submitted: false, 
         error: 'Failed to send message. Please try again.' 
       });
+      console.error('Error sending email:', error);
     }
   };
 
@@ -57,13 +58,18 @@ const ContactPage = () => {
   const socialLinks = [
     {
       icon: <FaLinkedin />,
-      url: 'https://www.linkedin.com/in/blake-harkness-b1a6b0293/',
+      url: 'https://www.linkedin.com/in/blake-harkness/',
       label: 'LinkedIn'
     },
     {
       icon: <FaGithub />,
       url: 'https://github.com/BlakeHarkness',
       label: 'GitHub'
+    },
+    {
+      icon: <FaYoutube />,
+      url: 'https://www.youtube.com/@BlakeHarknessTech',
+      label: 'Youtube'
     }
   ];
 
@@ -125,7 +131,7 @@ const ContactPage = () => {
 
             <div className="contact-form-container">
               <h2>Send a Message</h2>
-              <form onSubmit={handleSubmit} className="contact-form">
+              <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
                   <label htmlFor="name">Name</label>
                   <input

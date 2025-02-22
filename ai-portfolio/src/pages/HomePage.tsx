@@ -1,5 +1,5 @@
 import Hero from '../components/Hero';
-import { FaGraduationCap, FaLightbulb, FaTools } from 'react-icons/fa';
+import { FaGraduationCap, FaTools } from 'react-icons/fa';
 import '../styles/HomePage.css';
 import '../styles/AboutPage.css';
 
@@ -9,11 +9,6 @@ const HomePage = () => {
       icon: <FaGraduationCap />,
       title: "Educating",
       description: "Empowering your team with AI knowledge and best practices to drive innovation from within."
-    },
-    {
-      icon: <FaLightbulb />,
-      title: "Consulting",
-      description: "Strategic guidance on implementing AI solutions that align with your business objectives."
     },
     {
       icon: <FaTools />,
@@ -29,7 +24,7 @@ const HomePage = () => {
       <section className="section services-section">
         <div className="container">
           <h2 className="section-title">My Services</h2>
-          <div className="services-grid">
+          <div className="services-grid services-grid-two">
             {services.map((service, index) => (
               <div key={index} className="service-card">
                 <div className="service-icon">{service.icon}</div>
@@ -48,16 +43,12 @@ const HomePage = () => {
               <h2 className="section-title">About Me</h2>
               <div className="about-description">
                 <p>
-                  As an AI Engineer and Developer, I specialize in creating innovative solutions that 
-                  bridge the gap between cutting-edge AI technology and real-world business needs. 
-                  With a strong foundation in both artificial intelligence and software development, I
-                  help businesses leverage the power of AI to drive growth and efficiency.
+                Since discovering ChatGPT in late 2021, I've leveraged the power of AI to enhance both my personal and professional life. 
+                From using it to search for information instead of Google to coding side projects, AI has significantly accelerated my learning and development.
                 </p>
                 <p>
-                  My approach combines technical expertise with practical business understanding, ensuring that 
-                  every solution not only employs advanced technology but also delivers tangible value. Whether it's 
-                  developing intelligent automation systems, implementing machine learning models, or creating 
-                  AI-powered applications, I focus on delivering results that make a real difference.
+                Currently in the early stages of my career, I am passionate about expanding my skill set and making a meaningful impact in businesses. 
+                My goal is to harness the advancements in AI to improve efficiency and help intelligent people avoid unnecessary mistakes.
                 </p>
               </div>
             </div>

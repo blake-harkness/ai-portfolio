@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import '../styles/CaseStudiesPage.css';
+import glow4less from '/src/images/glow4less.png';
+import nceanav from '/src/images/nceanav.jpg';
+import cnc from '/src/images/cnc.png';
+import tenancy from '/src/images/tenancy.jpg';
+import hr from '/src/images/hr.jpg';
+import quote2 from '/src/images/quote2.jpg';
 
 const CaseStudiesPage = () => {
   const [selectedIndustry, setSelectedIndustry] = useState('all');
@@ -16,16 +22,16 @@ const CaseStudiesPage = () => {
   const caseStudies = [
     {
       id: 1,
-      title: "NCEA Navigator AI-Powered Tutoring",
+      title: "NCEA Navigator - AI Powered Tutoring",
       category: "Education AI",
       industry: "education",
       description: "Developed an intelligent tutoring system to help students navigate NCEA studies with personalized learning paths and instant feedback.",
-      image: "/images/nceanav.jpg",
-      technologies: ["Python", "OpenAI GPT", "React", "MongoDB"],
+      image: nceanav,
+      link: "https://ncea-navigator.vercel.app/",
+      technologies: ["OpenAI API", "React", "Supabase", "NLP"],
       results: [
-        "Improved student engagement by 40%",
-        "85% of students reported better understanding of subjects",
-        "Reduced tutoring costs by 60% for families"
+        "Generates additional external questions",
+        "Provides instant feedback on students answers"
       ]
     },
     {
@@ -33,41 +39,27 @@ const CaseStudiesPage = () => {
       title: "Glow 4 Less - AI Beauty Product Analysis",
       category: "E-commerce AI",
       industry: "retail",
-      description: "Created an AI-powered platform that analyzes beauty products to find more affordable alternatives with similar ingredients and effectiveness.",
-      image: "/images/glow4less.jpg",
-      technologies: ["Python", "Natural Language Processing", "React", "PostgreSQL"],
+      description: "Created an AI-powered platform that users upload photos of beauty products to find more affordable alternatives with similar ingredients and effectiveness.",
+      image: glow4less,
+      link: "https://www.glow4less.nz/",
+      technologies: ["OpenAI API", "React", "Supabase", "NLP"],
       results: [
-        "Average customer savings of 45%",
-        "90% match accuracy for product alternatives",
-        "User base growth of 200% in 6 months"
+        "Estimated average customer saving of $50",
+        "90% match accuracy for product alternatives"
       ]
     },
     {
       id: 3,
-      title: "Electricity Code QnA Bot",
+      title: "Tenancy Mate - NZ Law Chatbot",
       category: "Natural Language Processing",
       industry: "utilities",
-      description: "Built an intelligent chatbot system that answers queries about electricity codes and regulations, providing instant accurate information to technicians.",
-      image: "/images/electricityrag.jpg",
-      technologies: ["Python", "BERT", "FastAPI", "ElasticSearch"],
+      description: "Built an intelligent chatbot system that answers queries about NZ tenancy regulations, providing instant accurate information to users.",
+      image: tenancy,
+      link: "https://tenancymatenz.zapier.app/",
+      technologies: ["OpenAI API", "Zapier", "RAG", "NLP"],
       results: [
         "95% query accuracy rate",
-        "70% reduction in manual code lookup time",
-        "24/7 instant access to code information"
-      ]
-    },
-    {
-      id: 4,
-      title: "Seasonal Forecasting System",
-      category: "Predictive Analytics",
-      industry: "retail",
-      description: "Implemented a machine learning system for seasonal demand forecasting, helping businesses optimize inventory and staffing levels.",
-      image: "/images/sarimaxforecast.jpg",
-      technologies: ["Python", "TensorFlow", "Power BI", "AWS"],
-      results: [
-        "85% forecast accuracy",
-        "30% reduction in excess inventory",
-        "25% improvement in staff scheduling efficiency"
+        "User friendly instant access to tenancy law in NZ"
       ]
     },
     {
@@ -76,40 +68,26 @@ const CaseStudiesPage = () => {
       category: "Computer Vision",
       industry: "manufacturing",
       description: "Developed a computer vision system for automated quality control of CNC-manufactured parts, detecting defects in real-time.",
-      image: "/images/cncvision.jpg",
-      technologies: ["Python", "OpenCV", "PyTorch", "Docker"],
+      image: cnc,
+      link: "blakeharkness.com",
+      technologies: ["Python", "OpenCV", "Tensorflow"],
       results: [
         "99.5% defect detection accuracy",
-        "80% reduction in manual inspection time",
-        "60% decrease in defective parts reaching customers"
-      ]
-    },
-    {
-      id: 6,
-      title: "Automated Invoice Processing System",
-      category: "Process Automation",
-      industry: "business",
-      description: "Created an automated system that extracts data from invoices and logs them directly into Excel spreadsheets, eliminating manual data entry.",
-      image: "/images/invoiceautomation.jpg",
-      technologies: ["Python", "OCR", "Azure", "Microsoft Excel API"],
-      results: [
-        "95% reduction in manual data entry time",
-        "99.9% accuracy in data extraction",
-        "ROI achieved within 3 months"
+        "Significant reduction in manual inspection time"
       ]
     },
     {
       id: 7,
-      title: "Internal HR Policy Chatbot",
+      title: "HR Assistant - AI Powered QnA Chatbot",
       category: "Process Automation",
       industry: "business",
       description: "Created an automated system that extracts data from invoices and logs them directly into Excel spreadsheets, eliminating manual data entry.",
-      image: "/images/hrchatbot.jpg",
-      technologies: ["Python", "OCR", "Azure", "Microsoft Excel API"],
+      image: hr,
+      link: "https://hrassistant.zapier.app/",
+      technologies: ["OpenAI API", "Zapier", "RAG", "NLP"],
       results: [
-        "95% reduction in manual data entry time",
-        "99.9% accuracy in data extraction",
-        "ROI achieved within 3 months"
+        "98% reduction in manual data entry time",
+        "User friendly access to internal HR policy documents "
       ]
     }
   ];
@@ -117,26 +95,26 @@ const CaseStudiesPage = () => {
   const testimonials = [
     {
       id: 1,
-      name: "David Wilson",
-      position: "Head of Department",
-      company: "Wellington High School",
-      content: "The NCEA Navigator has transformed how our students approach their studies. The personalized learning paths have made a significant difference in student achievement.",
-      image: "/images/testimonial-1.jpg"
+      name: "N/A",
+      position: "N/A",
+      company: "N/A",
+      content: "This could be you, book a free session",
+      image: "/images/testimonial-3.jpg"
     },
     {
       id: 2,
-      name: "Lisa Chen",
-      position: "Operations Manager",
-      company: "Precision Parts NZ",
-      content: "The computer vision system has revolutionized our quality control process. We've seen a dramatic reduction in defects and improved customer satisfaction.",
-      image: "/images/testimonial-2.jpg"
+      name: "Dannielle Innes",
+      position: "University Student",
+      company: "N/A",
+      content: "As a student, finding alternative products with Glow4Less has helped me save money. It was easy as to use.",
+      image: quote2
     },
     {
       id: 3,
-      name: "James Thompson",
-      position: "Financial Controller",
-      company: "Thompson & Associates",
-      content: "The automated invoice processing system has saved us countless hours of manual data entry. It's incredibly accurate and has streamlined our entire accounts payable process.",
+      name: "N/A",
+      position: "N/A",
+      company: "N/A",
+      content: "This could be you, book a free session",
       image: "/images/testimonial-3.jpg"
     }
   ];
@@ -194,7 +172,7 @@ const CaseStudiesPage = () => {
                   </div>
                   
                   <div className="results">
-                    <h3>Key Results</h3>
+                    <h3>Key Points</h3>
                     <ul className="results-list">
                       {study.results.map(result => (
                         <li key={result}>{result}</li>
@@ -202,8 +180,8 @@ const CaseStudiesPage = () => {
                     </ul>
                   </div>
                   
-                  <a href="#" className="read-more-btn">
-                    View Full Case Study
+                  <a href={study.link} target="_blank" rel="noopener noreferrer" className="read-more-btn">
+                    View Project
                   </a>
                 </div>
               </article>
@@ -237,7 +215,7 @@ const CaseStudiesPage = () => {
 
       <section className="section skills-section">
         <div className="container">
-          <h2 className="section-title">Skills & Expertise</h2>
+          <h2 className="section-title">Skills & Experience</h2>
           <div className="skills-container">
             <div className="skills-category">
               <h3>AI & Machine Learning</h3>
@@ -252,11 +230,11 @@ const CaseStudiesPage = () => {
                   </ul>
                 </div>
                 <div className="skill-item">
-                  <h4>Natural Language Processing</h4>
+                  <h4>Large Language Models</h4>
                   <ul>
-                    <li>BERT/GPT Models</li>
-                    <li>Text Classification</li>
-                    <li>Named Entity Recognition</li>
+                    <li>GPT Models</li>
+                    <li>Retrival Augemented Generation</li>
+                    <li>Natural Language Processing</li>
                     <li>Sentiment Analysis</li>
                   </ul>
                 </div>
@@ -290,16 +268,16 @@ const CaseStudiesPage = () => {
                     <li>Python</li>
                     <li>Node.js</li>
                     <li>RESTful APIs</li>
-                    <li>Database Design</li>
+                    <li>SQL</li>
                   </ul>
                 </div>
                 <div className="skill-item">
-                  <h4>Cloud & DevOps</h4>
+                  <h4>Tooling</h4>
                   <ul>
-                    <li>AWS Services</li>
-                    <li>Docker</li>
-                    <li>CI/CD</li>
-                    <li>Microservices</li>
+                    <li>Microsoft & Azure</li>
+                    <li>Google AI Studio</li>
+                    <li>Zapier, n8n</li>
+                    <li>Cursor AI</li>
                   </ul>
                 </div>
               </div>
