@@ -63,7 +63,7 @@ const ContactPage = () => {
     },
     {
       icon: <FaGithub />,
-      url: 'https://github.com/BlakeHarkness',
+      url: 'https://github.com/blake-harkness',
       label: 'GitHub'
     },
     {
