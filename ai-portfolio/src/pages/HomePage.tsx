@@ -45,6 +45,8 @@ const HomePage = () => {
                 <p>
                 Since discovering ChatGPT in late 2021, I've leveraged the power of AI to enhance both my personal and professional life. 
                 From using it to search for information instead of Google to coding side projects, AI has significantly accelerated my learning and development.
+                I have always had interest in working on meaningful projects, you can check some of my previous work at:  
+                <a href="https://www.blakeharkness.com" target="_blank" > blakeharkness.com</a>
                 </p>
                 <p>
                 Currently in the early stages of my career, I am passionate about expanding my skill set and making a meaningful impact in businesses. 
