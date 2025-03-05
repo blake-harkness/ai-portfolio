@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaQuoteLeft, FaFilter } from 'react-icons/fa';
 import '../styles/CaseStudiesPage.css';
 import glow4less from '/src/images/glow4less.png';
 import nceanav from '/src/images/nceanav.jpg';
@@ -127,15 +128,24 @@ const CaseStudiesPage = () => {
     <div className="page case-studies-page">
       <section className="section hero-section">
         <div className="container">
-          <h1 className="page-title">Case Studies</h1>
-          <p className="lead">Exploring real-world applications of AI and machine learning</p>
+          <h1 className="page-title">Our AI Solutions</h1>
+          <p className="lead">Innovative applications of artificial intelligence solving real business challenges</p>
+        </div>
+        <div className="hero-background">
+          <div className="overlay"></div>
+          <div className="particles-container">
+            <div className="particles"></div>
+          </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section filter-section">
         <div className="container">
           <div className="industry-filter">
-            <label htmlFor="industry-select">Filter by Industry:</label>
+            <div className="filter-label">
+              <FaFilter className="filter-icon" />
+              <label htmlFor="industry-select">Filter by Industry:</label>
+            </div>
             <select
               id="industry-select"
               value={selectedIndustry}
@@ -151,8 +161,8 @@ const CaseStudiesPage = () => {
           </div>
 
           <div className="case-studies-grid">
-            {filteredCaseStudies.map(study => (
-              <article key={study.id} className="case-study-card">
+            {filteredCaseStudies.map((study, index) => (
+              <article key={study.id} className={`case-study-card card float float-delay-${index % 3 + 1}`}>
                 <div className="case-study-image">
                   <img src={study.image} alt={study.title} />
                   <span className="category-tag">{study.category}</span>
@@ -172,7 +182,7 @@ const CaseStudiesPage = () => {
                   </div>
                   
                   <div className="results">
-                    <h3>Key Points</h3>
+                    <h3>Key Results</h3>
                     <ul className="results-list">
                       {study.results.map(result => (
                         <li key={result}>{result}</li>
@@ -180,7 +190,7 @@ const CaseStudiesPage = () => {
                     </ul>
                   </div>
                   
-                  <a href={study.link} target="_blank" rel="noopener noreferrer" className="read-more-btn">
+                  <a href={study.link} target="_blank" rel="noopener noreferrer" className="button button-primary view-project-btn">
                     View Project
                   </a>
                 </div>
@@ -194,18 +204,18 @@ const CaseStudiesPage = () => {
         <div className="container">
           <h2 className="section-title">Client Testimonials</h2>
           <div className="testimonials-grid">
-            {testimonials.map(testimonial => (
-              <div key={testimonial.id} className="testimonial-card">
-                <div className="testimonial-content">
-                  <p>{testimonial.content}</p>
+            {testimonials.map((testimonial, index) => (
+              <div key={testimonial.id} className={`testimonial-card card float float-delay-${index + 1}`}>
+                <div className="quote-icon">
+                  <FaQuoteLeft />
                 </div>
+                <blockquote className="testimonial-quote">
+                  {testimonial.content}
+                </blockquote>
                 <div className="testimonial-author">
-                  <img src={testimonial.image} alt={testimonial.name} className="author-image" />
-                  <div className="author-info">
-                    <h3>{testimonial.name}</h3>
-                    <p>{testimonial.position}</p>
-                    <p className="company">{testimonial.company}</p>
-                  </div>
+                  <h4>{testimonial.name}</h4>
+                  <p>{testimonial.position}</p>
+                  {testimonial.company !== "N/A" && <p className="company">{testimonial.company}</p>}
                 </div>
               </div>
             ))}
@@ -215,12 +225,11 @@ const CaseStudiesPage = () => {
 
       <section className="section skills-section">
         <div className="container">
-          <h2 className="section-title">Skills & Experience</h2>
+          <h2 className="section-title">Our AI Expertise</h2>
           <div className="skills-container">
             <div className="skills-category">
-              <h3>AI & Machine Learning</h3>
               <div className="skills-grid">
-                <div className="skill-item">
+                <div className="skill-item card">
                   <h4>Deep Learning</h4>
                   <ul>
                     <li>TensorFlow</li>
@@ -229,55 +238,22 @@ const CaseStudiesPage = () => {
                     <li>Computer Vision</li>
                   </ul>
                 </div>
-                <div className="skill-item">
+                <div className="skill-item card">
                   <h4>Large Language Models</h4>
                   <ul>
                     <li>GPT Models</li>
-                    <li>Retrival Augemented Generation</li>
+                    <li>Retrieval Augmented Generation</li>
                     <li>Natural Language Processing</li>
                     <li>Sentiment Analysis</li>
                   </ul>
                 </div>
-                <div className="skill-item">
+                <div className="skill-item card">
                   <h4>Machine Learning</h4>
                   <ul>
                     <li>Scikit-learn</li>
                     <li>Statistical Analysis</li>
                     <li>Feature Engineering</li>
                     <li>Model Optimization</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            
-            <div className="skills-category">
-              <h3>Development & Cloud</h3>
-              <div className="skills-grid">
-                <div className="skill-item">
-                  <h4>Frontend Development</h4>
-                  <ul>
-                    <li>React</li>
-                    <li>TypeScript</li>
-                    <li>HTML/CSS</li>
-                    <li>Modern UI/UX</li>
-                  </ul>
-                </div>
-                <div className="skill-item">
-                  <h4>Backend Development</h4>
-                  <ul>
-                    <li>Python</li>
-                    <li>Node.js</li>
-                    <li>RESTful APIs</li>
-                    <li>SQL</li>
-                  </ul>
-                </div>
-                <div className="skill-item">
-                  <h4>Tooling</h4>
-                  <ul>
-                    <li>Microsoft & Azure</li>
-                    <li>Google AI Studio</li>
-                    <li>Zapier, n8n</li>
-                    <li>Cursor AI</li>
                   </ul>
                 </div>
               </div>

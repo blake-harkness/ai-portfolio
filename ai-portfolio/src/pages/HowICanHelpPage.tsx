@@ -1,117 +1,263 @@
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FaArrowRight, FaCheck, FaLightbulb, FaRobot, FaCode, FaChartLine, FaDatabase } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import '../styles/HowICanHelpPage.css';
-import { FaGraduationCap, FaTools } from 'react-icons/fa';
 
-const HowICanHelpPage = () => {
+const HowICanHelpPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
   const services = [
     {
-      icon: <FaGraduationCap />,
-      title: "Educating",
-      description: "Empowering your team with AI knowledge and best practices to drive innovation from within."
+      id: 1,
+      title: "AI Strategy Consulting",
+      icon: <FaLightbulb className="service-icon" />,
+      description: "Develop a comprehensive AI strategy tailored to your business needs. I'll help you identify opportunities, assess feasibility, and create a roadmap for AI implementation.",
+      benefits: [
+        "Custom AI roadmap aligned with business goals",
+        "Competitive analysis and market positioning",
+        "Risk assessment and mitigation strategies",
+        "ROI projections and success metrics"
+      ],
+      cta: "Schedule a Strategy Session"
     },
     {
-      icon: <FaTools />,
-      title: "Building",
-      description: "Developing custom AI solutions that automate processes and drive business growth."
+      id: 2,
+      title: "Conversational AI Development",
+      icon: <FaRobot className="service-icon" />,
+      description: "Create sophisticated AI chatbots and virtual assistants that engage your customers naturally. From simple FAQ bots to complex conversational agents, I'll build solutions that enhance user experience.",
+      benefits: [
+        "Natural language understanding and generation",
+        "Seamless integration with existing platforms",
+        "Continuous learning and improvement",
+        "Multi-channel deployment (web, mobile, messaging)"
+      ],
+      cta: "Explore Conversational AI"
+    },
+    {
+      id: 3,
+      title: "Custom AI Solution Development",
+      icon: <FaCode className="service-icon" />,
+      description: "Transform your ideas into powerful AI applications. I specialize in developing custom AI solutions that solve specific business problems and create competitive advantages.",
+      benefits: [
+        "End-to-end development from concept to deployment",
+        "Integration with existing systems and workflows",
+        "Scalable architecture for future growth",
+        "Comprehensive documentation and knowledge transfer"
+      ],
+      cta: "Start Your AI Project"
+    },
+    {
+      id: 4,
+      title: "AI-Powered Analytics",
+      icon: <FaChartLine className="service-icon" />,
+      description: "Unlock the power of your data with AI-driven analytics. I'll help you implement predictive models, recommendation systems, and data visualization tools that drive better decision-making.",
+      benefits: [
+        "Predictive analytics and forecasting",
+        "Customer segmentation and targeting",
+        "Anomaly detection and risk management",
+        "Interactive dashboards and visualizations"
+      ],
+      cta: "Leverage Your Data"
+    },
+    {
+      id: 5,
+      title: "AI Model Training & Optimization",
+      icon: <FaDatabase className="service-icon" />,
+      description: "Improve the performance of your AI models through expert training and optimization. I'll help you enhance accuracy, reduce bias, and optimize for production environments.",
+      benefits: [
+        "Data preparation and feature engineering",
+        "Model selection and hyperparameter tuning",
+        "Performance evaluation and improvement",
+        "Deployment optimization for speed and efficiency"
+      ],
+      cta: "Optimize Your AI"
+    }
+  ];
+
+  const processSteps = [
+    {
+      number: "01",
+      title: "Discovery",
+      description: "We begin with a thorough consultation to understand your business, challenges, and goals. This helps me identify how AI can create the most value for your organization."
+    },
+    {
+      number: "02",
+      title: "Strategy",
+      description: "Based on our discovery, I develop a tailored AI strategy that outlines the approach, technologies, timeline, and expected outcomes for your project."
+    },
+    {
+      number: "03",
+      title: "Development",
+      description: "My iterative development process ensures you're involved at every stage. I build, test, and refine the AI solution to meet your specific requirements."
+    },
+    {
+      number: "04",
+      title: "Implementation",
+      description: "I carefully deploy the AI solution into your environment, ensuring seamless integration with existing systems and providing comprehensive training for your team."
+    },
+    {
+      number: "05",
+      title: "Optimization",
+      description: "AI solutions improve over time. I provide ongoing support to monitor performance, gather feedback, and continuously enhance your AI capabilities."
     }
   ];
 
   return (
-    <div className="page how-i-can-help-page">
-      <section className="section hero-section">
+    <div className="how-i-can-help-page">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="particles-container">
+          <div className="particles"></div>
+        </div>
+        <div className="overlay"></div>
         <div className="container">
-          <h1 className="page-title">How I Can Help</h1>
-          <p className="lead">Transforming businesses through AI innovation</p>
+          <motion.h1 
+            className="page-title"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            AI Solutions for Your Business
+          </motion.h1>
+          <motion.p 
+            className="lead"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            Transforming businesses through innovative AI solutions that drive growth, efficiency, and competitive advantage.
+          </motion.p>
         </div>
       </section>
 
-      <section className="section impact-section">
+      {/* Services Section */}
+      <section className="services-section">
         <div className="container">
-          <div className="impact-content">
-            <h2>The Impact of AI on Business</h2>
-            <div className="tech-evolution">
-              <h3>Time Recovery Through AI</h3>
-              <blockquote>
-                "According to a McKinsey report, employees spend 1.8 hours every day on average searching and gathering information."
-              </blockquote>
-            </div>
-            <div className="tech-evolution">
-              <h3>The Technology Imperative</h3>
-              <blockquote>
-               "Ignoring AI in business today is like refusing to use electricity or computers in the past. While others streamline, innovate, and grow, those who resist will be left struggling to keep up."
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </section>
+          <motion.div 
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeIn}
+          >
+            <h2>How I Can Help</h2>
+            <p>Specialized AI services designed to address your unique business challenges</p>
+          </motion.div>
 
-      <section className="section services-section">
-        <div className="container">
-          <h2>My Services</h2>
-          <div className="services-grid services-grid-two">
-            {services.map((service, index) => (
-              <div key={index} className="service-card">
-                <div className="service-icon">{service.icon}</div>
+          <motion.div 
+            className="services-grid"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {services.map((service) => (
+              <motion.div 
+                key={service.id} 
+                className="service-card"
+                variants={fadeIn}
+              >
+                <div className="service-icon-wrapper">
+                  {service.icon}
+                </div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-              </div>
+                <div className="benefits">
+                  <h4>Key Benefits</h4>
+                  <ul>
+                    {service.benefits.map((benefit, index) => (
+                      <li key={index}>
+                        <FaCheck className="check-icon" />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <Link to="/contact" className="cta-button">
+                  {service.cta} <FaArrowRight className="arrow-icon" />
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="section consultation-section">
+      {/* Process Section */}
+      <section className="process-section">
         <div className="container">
-          <div className="consultation-offer">
-            <h2 className="section-title">Free AI Strategy Session</h2>
-            <p className="consultation-subtitle">Discover How AI Can Transform Your Business</p>
-            
-            <div className="consultation-value">
-              <div className="value-item">
-                <span className="value-number">30</span>
-                <span className="value-label">Minute Strategy Session</span>
-              </div>
-              <div className="value-item">
-                <span className="value-number">100%</span>
-                <span className="value-label">Free Session</span>
-              </div>
-              <div className="value-item">
-                <span className="value-number">3+</span>
-                <span className="value-label">Custom AI Suggestions</span>
-              </div>
-            </div>
+          <motion.div 
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeIn}
+          >
+            <h2>My Process</h2>
+            <p>A structured approach to delivering successful AI solutions</p>
+          </motion.div>
 
-            <div className="consultation-steps">
-              <div className="step">
-                <div className="step-icon">1</div>
-                <h3>Discovery Session</h3>
-                <p>In-depth discussion about your business challenges and objectives</p>
-              </div>
-              <div className="step">
-                <div className="step-icon">2</div>
-                <h3>Solution Planning</h3>
-                <p>Identify the best AI solutions for your specific needs</p>
-              </div>
-              <div className="step">
-                <div className="step-icon">3</div>
-                <h3>Customised AI Report</h3>
-                <p>Detailed outline of potential AI tools for the best ROI</p>
-              </div>
-            </div>
+          <motion.div 
+            className="process-timeline"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {processSteps.map((step, index) => (
+              <motion.div 
+                key={index} 
+                className="process-step"
+                variants={fadeIn}
+              >
+                <div className="step-number">{step.number}</div>
+                <div className="step-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-            <div className="consultation-benefits">
-              <h3>What You'll Get</h3>
-              <ul className="benefits-list">
-                <li>Custom AI solution recommendations</li>
-                <li>Implementation cost analysis</li>
-                <li>ROI projections</li>
-                <li>Technical feasibility assessment</li>
-              </ul>
-            </div>
-            
-            <div className="cta-container">
-              <a href="/contact" className="cta-button">Schedule Your Free Session</a>
-            </div>
-          </div>
+      {/* CTA Section */}
+      <section className="cta-section">
+        <div className="container">
+          <motion.div 
+            className="cta-content"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2>Ready to Transform Your Business with AI?</h2>
+            <p>Let's discuss how my AI solutions can address your specific challenges and drive meaningful results.</p>
+            <Link to="/contact" className="primary-button">
+              Schedule a Consultation
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

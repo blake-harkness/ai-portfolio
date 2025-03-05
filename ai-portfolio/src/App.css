@@ -1,11 +1,15 @@
 /* Global CSS Variables */
 :root {
-  --primary-color: #2563eb;
-  --secondary-color: #3b82f6;
-  --text-color: #1f2937;
+  --primary-color: #3a86ff;
+  --secondary-color: #8338ec;
+  --text-color: #1a1a2e;
   --background-color: #ffffff;
-  --accent-color: #dbeafe;
-  --header-height: 4rem;
+  --accent-color: #f0f7ff;
+  --gradient-start: #3a86ff;
+  --gradient-end: #8338ec;
+  --card-bg: #ffffff;
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --header-height: 4.5rem;
   
   /* Typography */
   --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
@@ -26,7 +30,7 @@ html {
 body {
   font-family: var(--font-primary);
   color: var(--text-color);
-  line-height: 1.5;
+  line-height: 1.6;
   background-color: var(--background-color);
 }
 
@@ -47,34 +51,96 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   line-height: 1.2;
+  font-weight: 700;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
 }
 
 /* Section Styles */
 .section {
-  padding: 4rem 0;
+  padding: 5rem 0;
 }
 
 .section-title {
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   color: var(--text-color);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  border-radius: 2px;
 }
 
 /* Page Styles */
 .page {
   width: 100%;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Button Styles */
+.button {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-primary {
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  color: white;
+  border: none;
+}
+
+.button-secondary {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* Animations */
@@ -89,18 +155,43 @@ a {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .fade-in {
   animation: fadeIn 0.6s ease-out forwards;
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.float-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.float-delay-2 {
+  animation-delay: 0.4s;
+}
+
+.float-delay-3 {
+  animation-delay: 0.6s;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
   :root {
-    --header-height: 3.5rem;
+    --header-height: 4rem;
   }
   
   .section {
-    padding: 2rem 0;
+    padding: 3rem 0;
   }
 
   .section-title {
@@ -108,11 +199,12 @@ a {
   }
 }
 
+/* Remove Vite default styles */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 .logo {
@@ -141,10 +233,6 @@ a {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
 }
 
 .read-the-docs {

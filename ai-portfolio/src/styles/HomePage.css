@@ -1,51 +1,111 @@
 .home-page .section {
-  padding: 5rem 0;
+  padding: 6rem 0;
 }
 
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   color: var(--text-color);
 }
 
 /* Services Section */
+.services-section {
+  background-color: var(--background-color);
+}
+
+.capabilities-section {
+  background-color: var(--accent-color);
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
   margin-top: 3rem;
 }
 
 .service-card {
-  background: white;
-  padding: 2rem;
+  background: var(--card-bg);
+  padding: 2.5rem;
   border-radius: 1rem;
   text-align: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(58, 134, 255, 0.05), rgba(131, 56, 236, 0.05));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card:hover::after {
+  opacity: 1;
 }
 
 .service-icon {
   font-size: 2.5rem;
-  color: var(--primary-color);
   margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
+  color: var(--primary-color);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+  color: var(--secondary-color);
 }
 
 .service-card h3 {
   color: var(--text-color);
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .service-card p {
   color: var(--text-color);
   opacity: 0.8;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* Features Section */
@@ -81,13 +141,30 @@
 
 /* About Section */
 .about-section {
-  background-color: var(--accent-color);
+  background-color: var(--background-color);
   padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(58, 134, 255, 0.03) 0%, transparent 200px),
+    radial-gradient(circle at 80% 70%, rgba(131, 56, 236, 0.03) 0%, transparent 200px);
+  z-index: 0;
 }
 
 .about-content-wrapper {
   max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .about-text {
@@ -230,42 +307,105 @@
 
 .services-grid-two {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .services-grid-two .service-card {
-  text-align: center;
-  padding: 2.5rem;
-  background: white;
+  background: var(--card-bg);
+  padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: var(--card-shadow);
+  flex: 1;
+  min-width: 0;
+}
+
+.service-card p {
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.7;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  background-color: var(--background-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(58, 134, 255, 0.03) 0%, transparent 300px),
+    radial-gradient(circle at 90% 90%, rgba(131, 56, 236, 0.03) 0%, transparent 300px);
+  z-index: 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-card {
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.services-grid-two .service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.services-grid-two .service-icon {
-  font-size: 2.5rem;
+.quote-icon {
+  font-size: 2rem;
   color: var(--primary-color);
+  opacity: 0.2;
   margin-bottom: 1.5rem;
 }
 
-.services-grid-two .service-card h3 {
-  font-size: 1.5rem;
+.testimonial-quote {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 1.5rem 0;
   color: var(--text-color);
-  margin-bottom: 1rem;
+  opacity: 0.9;
 }
 
-.services-grid-two .service-card p {
+.testimonial-author {
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 1.5rem;
+}
+
+.testimonial-author h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
   color: var(--text-color);
-  opacity: 0.8;
-  line-height: 1.6;
+}
+
+.testimonial-author p {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.7;
 }
 
 @media (max-width: 1024px) {
@@ -276,17 +416,25 @@
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-grid-two {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   .section-title {
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   .process-grid {
@@ -294,17 +442,96 @@
   }
 
   .home-page .section {
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 
   .about-description p {
     font-size: 1rem;
-    line-height: 1.6;
   }
 
   .services-grid-two {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 0 1rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: white;
+  text-align: center;
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 200px),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 200px);
+  z-index: 1;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.cta-section p {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 2.5rem;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.cta-button {
+  font-size: 1.125rem;
+  padding: 1rem 2.5rem;
+  background: white;
+  color: var(--primary-color);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon-right {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .icon-right {
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+  
+  .cta-section p {
+    font-size: 1.125rem;
   }
 } 

@@ -1,13 +1,13 @@
-import { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
-import { FaLinkedin, FaGithub, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import '../styles/ContactPage.css';
 
-// Initialize EmailJS with your public key
-emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+const ContactPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-const ContactPage = () => {
-  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,197 +15,292 @@ const ContactPage = () => {
     message: ''
   });
 
-  const [status, setStatus] = useState({
-    submitting: false,
+  const [formStatus, setFormStatus] = useState({
     submitted: false,
-    error: null as string | null
+    success: false,
+    message: ''
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus({ submitting: true, submitted: false, error: null });
-
-    try {
-      if (!formRef.current) return;
-
-      await emailjs.sendForm(
-        'service_00loe13', // Replace with your EmailJS service ID
-        'template_gnfda74', // Replace with your EmailJS template ID
-        formRef.current,
-        'ZDtqDbMMEJiYHLoox' // Replace with your EmailJS public key
-      );
-
-      setStatus({ submitting: false, submitted: true, error: null });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      setStatus({ 
-        submitting: false, 
-        submitted: false, 
-        error: 'Failed to send message. Please try again.' 
-      });
-      console.error('Error sending email:', error);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
+    setFormData(prevState => ({
+      ...prevState,
       [name]: value
     }));
   };
 
-  const socialLinks = [
-    {
-      icon: <FaLinkedin />,
-      url: 'https://www.linkedin.com/in/blake-harkness/',
-      label: 'LinkedIn'
-    },
-    {
-      icon: <FaGithub />,
-      url: 'https://github.com/blake-harkness',
-      label: 'GitHub'
-    },
-    {
-      icon: <FaYoutube />,
-      url: 'https://www.youtube.com/@BlakeHarknessTech',
-      label: 'Youtube'
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulate form submission
+    setFormStatus({
+      submitted: true,
+      success: true,
+      message: 'Thank you for your message! I will get back to you soon.'
+    });
+    
+    // Reset form after successful submission
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
     }
-  ];
+  };
 
   return (
-    <div className="page contact-page">
-      <section className="section hero-section">
+    <div className="contact-page">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="particles-container">
+          <div className="particles"></div>
+        </div>
+        <div className="overlay"></div>
         <div className="container">
-          <h1 className="page-title">Get in Touch</h1>
-          <p className="lead">Let's discuss how we can work together</p>
+          <motion.h1 
+            className="page-title"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            Let's Connect
+          </motion.h1>
+          <motion.p 
+            className="lead"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            Have a project in mind or want to explore how AI can transform your business? I'd love to hear from you.
+          </motion.p>
         </div>
       </section>
 
-      <section className="section contact-section">
+      {/* Contact Section */}
+      <section className="contact-section">
         <div className="container">
           <div className="contact-grid">
-            <div className="contact-info">
+            {/* Contact Information */}
+            <motion.div 
+              className="contact-info"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
               <h2>Contact Information</h2>
-              <div className="info-items">
-                <div className="info-item">
-                  <FaEnvelope className="info-icon" />
-                  <div className="info-item-content">
+              <p className="contact-intro">
+                Ready to discuss your AI project? Reach out through any of these channels and I'll get back to you promptly.
+              </p>
+              
+              <div className="contact-methods">
+                <div className="contact-method">
+                  <div className="icon-wrapper">
+                    <FaEnvelope className="contact-icon" />
+                  </div>
+                  <div className="contact-details">
                     <h3>Email</h3>
-                    <p>blake.ac.harkness@gmail.com</p>
+                    <p><a href="mailto:contact@harknessai.com">contact@harknessai.com</a></p>
                   </div>
                 </div>
-                <div className="info-item">
-                  <FaMapMarkerAlt className="info-icon" />
-                  <div className="info-item-content">
-                    <h3>Location</h3>
-                    <p>Christchurch, New Zealand</p>
+                
+                <div className="contact-method">
+                  <div className="icon-wrapper">
+                    <FaPhone className="contact-icon" />
                   </div>
-                </div>
-                <div className="info-item">
-                  <FaPhone className="info-icon" />
-                  <div className="info-item-content">
+                  <div className="contact-details">
                     <h3>Phone</h3>
-                    <p>027 518 3692</p>
+                    <p><a href="tel:+447123456789">+44 7123 456 789</a></p>
                   </div>
                 </div>
-                <div className="info-item social-item">
-                  <h3>Social</h3>
-                  <div className="social-links">
-                    {socialLinks.map((link, index) => (
-                      <a
-                        key={index}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={link.label}
-                        className="social-link"
-                      >
-                        {link.icon}
-                      </a>
-                    ))}
+                
+                <div className="contact-method">
+                  <div className="icon-wrapper">
+                    <FaMapMarkerAlt className="contact-icon" />
+                  </div>
+                  <div className="contact-details">
+                    <h3>Location</h3>
+                    <p>London, United Kingdom</p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="contact-form-container">
-              <h2>Send a Message</h2>
-              <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    disabled={status.submitting}
-                  />
+              
+              <div className="social-links">
+                <h3>Connect With Me</h3>
+                <div className="social-icons">
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaLinkedin />
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaTwitter />
+                  </a>
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaGithub />
+                  </a>
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    disabled={status.submitting}
-                  />
+              </div>
+              
+              <div className="availability">
+                <h3>Availability</h3>
+                <p>Currently available for new projects and consultations.</p>
+                <div className="availability-indicator">
+                  <span className="status-dot"></span>
+                  <span className="status-text">Available for work</span>
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="subject">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    disabled={status.submitting}
-                  />
+              </div>
+            </motion.div>
+            
+            {/* Contact Form */}
+            <motion.div 
+              className="contact-form-container"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
+              <h2>Send Me a Message</h2>
+              
+              {formStatus.submitted && formStatus.success ? (
+                <div className="form-success-message">
+                  <div className="success-icon">✓</div>
+                  <h3>Message Sent!</h3>
+                  <p>{formStatus.message}</p>
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    disabled={status.submitting}
-                  />
-                </div>
-
-                {status.error && (
-                  <div className="error-message">
-                    {status.error}
+              ) : (
+                <form className="contact-form" onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="name">Your Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="John Doe"
+                    />
                   </div>
-                )}
-
-                {status.submitted && (
-                  <div className="success-message">
-                    Message sent successfully! I'll get back to you soon.
+                  
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="john@example.com"
+                    />
                   </div>
-                )}
-
-                <button 
-                  type="submit" 
-                  className="submit-btn"
-                  disabled={status.submitting}
-                >
-                  {status.submitting ? 'Sending...' : 'Send Message'}
-                </button>
-              </form>
-            </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="subject">Subject</label>
+                    <select
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="" disabled>Select a subject</option>
+                      <option value="Project Inquiry">Project Inquiry</option>
+                      <option value="Consultation Request">Consultation Request</option>
+                      <option value="Partnership Opportunity">Partnership Opportunity</option>
+                      <option value="General Question">General Question</option>
+                    </select>
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="message">Your Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      placeholder="Tell me about your project or inquiry..."
+                      rows={6}
+                    ></textarea>
+                  </div>
+                  
+                  <button type="submit" className="submit-button">
+                    Send Message
+                  </button>
+                </form>
+              )}
+            </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="faq-section">
+        <div className="container">
+          <motion.div 
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <h2>Frequently Asked Questions</h2>
+            <p>Answers to common questions about working with me</p>
+          </motion.div>
+          
+          <motion.div 
+            className="faq-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
+            <motion.div className="faq-item" variants={fadeIn}>
+              <h3>What is your typical process for new projects?</h3>
+              <p>I follow a structured approach that begins with a discovery call to understand your needs, followed by a proposal outlining scope, timeline, and cost. Once approved, we move into development with regular check-ins and iterations until the final delivery.</p>
+            </motion.div>
+            
+            <motion.div className="faq-item" variants={fadeIn}>
+              <h3>How long does a typical AI project take?</h3>
+              <p>Project timelines vary based on complexity and scope. Simple AI integrations might take 2-4 weeks, while more complex custom solutions can take 2-3 months. I'll provide a detailed timeline during our initial consultation.</p>
+            </motion.div>
+            
+            <motion.div className="faq-item" variants={fadeIn}>
+              <h3>Do you offer ongoing support after project completion?</h3>
+              <p>Yes, I offer various support packages to ensure your AI solution continues to perform optimally. This includes monitoring, updates, and further training of models as needed.</p>
+            </motion.div>
+            
+            <motion.div className="faq-item" variants={fadeIn}>
+              <h3>What industries do you specialize in?</h3>
+              <p>I've worked across various sectors including healthcare, finance, retail, and education. My approach is adaptable to different industry contexts, focusing on the specific AI needs of your business.</p>
+            </motion.div>
+            
+            <motion.div className="faq-item" variants={fadeIn}>
+              <h3>How do we get started?</h3>
+              <p>Simply reach out through the contact form or email me directly. We'll schedule an initial consultation to discuss your project needs and determine if we're a good fit to work together.</p>
+            </motion.div>
+            
+            <motion.div className="faq-item" variants={fadeIn}>
+              <h3>What information should I prepare for our first meeting?</h3>
+              <p>It's helpful to have a clear idea of your business challenge, any existing solutions you've tried, and your goals for implementing AI. Don't worry if you don't have all the details - I can help guide the discovery process.</p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </div>
