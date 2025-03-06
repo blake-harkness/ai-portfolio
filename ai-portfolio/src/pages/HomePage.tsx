@@ -7,6 +7,11 @@ import '../styles/AboutPage.css';
 const HomePage = () => {
   const services = [
     {
+      icon: <FaChalkboardTeacher />,
+      title: "Teaching",
+      description: "Expert-led training and education in AI technologies, helping your team build the skills needed for the future."
+    },
+    {
       icon: <FaRobot />,
       title: "AI Consulting",
       description: "Strategic guidance on implementing AI solutions that align with your business goals and enhance operational efficiency."
@@ -15,29 +20,24 @@ const HomePage = () => {
       icon: <FaCode />,
       title: "Custom AI Development",
       description: "Tailored AI solutions designed to address your specific business challenges and drive innovation."
-    },
-    {
-      icon: <FaChalkboardTeacher />,
-      title: "Teaching",
-      description: "Expert-led training and education in AI technologies, helping your team build the skills needed for the future."
     }
   ];
 
   const testimonials = [
     {
-      quote: "Harkness AI transformed our customer service operations with their intelligent chatbot solution. We've seen a 40% reduction in response times and significantly improved customer satisfaction.",
-      author: "Sarah Johnson",
-      position: "CTO, TechVision Inc."
+      quote: "This could be your success story. Book a free consultation to discuss how AI can transform your business.",
+      author: "Your Name Here",
+      position: "Book a Free Session"
     },
     {
-      quote: "The team at Harkness AI helped us implement a predictive analytics system that has revolutionized our inventory management. Their expertise and support throughout the process were exceptional.",
-      author: "Michael Chen",
-      position: "Operations Director, Global Retail"
+      quote: "Ready to leverage AI for your business? Let's explore how we can create innovative solutions tailored to your needs.",
+      author: "Future Client",
+      position: "Schedule a Consultation"
     },
     {
-      quote: "Working with Harkness AI has been a game-changer for our business. Their AI solutions have helped us automate repetitive tasks and focus on strategic initiatives.",
-      author: "Emily Rodriguez",
-      position: "CEO, Innovate Solutions"
+      quote: "Join our growing list of successful AI implementations. Start your journey towards AI-driven business transformation today.",
+      author: "Next Success Story",
+      position: "Contact Now"
     }
   ];
 

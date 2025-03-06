@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaCheck, FaLightbulb, FaRobot, FaCode, FaChartLine, FaDatabase } from 'react-icons/fa';
+import { FaArrowRight, FaCheck, FaLightbulb, FaRobot, FaCode, FaChartLine, FaPen, FaCogs } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../styles/HowICanHelpPage.css';
 
@@ -83,16 +83,29 @@ const HowICanHelpPage: React.FC = () => {
     },
     {
       id: 5,
-      title: "AI Model Training & Optimization",
-      icon: <FaDatabase className="service-icon" />,
-      description: "Improve the performance of your AI models through expert training and optimization. I'll help you enhance accuracy, reduce bias, and optimize for production environments.",
+      title: "Content Creation",
+      icon: <FaPen className="service-icon" />,
+      description: "Generate high-quality, engaging content at scale with AI. From marketing copy to technical documentation, I'll help you create compelling content that resonates with your audience.",
       benefits: [
-        "Data preparation and feature engineering",
-        "Model selection and hyperparameter tuning",
-        "Performance evaluation and improvement",
-        "Deployment optimization for speed and efficiency"
+        "AI-powered content generation",
+        "SEO-optimized writing",
+        "Multilingual content support",
+        "Consistent brand voice and messaging"
       ],
-      cta: "Optimize Your AI"
+      cta: "Create Content"
+    },
+    {
+      id: 6,
+      title: "AI Automation",
+      icon: <FaCogs className="service-icon" />,
+      description: "Streamline your business processes with intelligent automation solutions. From workflow automation to smart document processing, I'll help you reduce manual tasks and increase operational efficiency.",
+      benefits: [
+        "Intelligent process automation",
+        "Document processing and data extraction",
+        "Workflow optimization",
+        "Integration with existing tools and systems"
+      ],
+      cta: "Automate with AI"
     }
   ];
 

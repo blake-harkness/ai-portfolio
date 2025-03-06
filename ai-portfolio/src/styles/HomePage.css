@@ -86,7 +86,7 @@
   justify-content: center;
   margin: 0 auto 1.5rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
+  background: rgba(58, 134, 255, 0.3);
   color: var(--primary-color);
 }
 
@@ -497,7 +497,7 @@
 .cta-section p {
   font-size: 1.25rem;
   margin: 1.5rem 0 2.5rem;
-  color: var(--text-color);
+  color: white;
   opacity: 0.9;
 }
 

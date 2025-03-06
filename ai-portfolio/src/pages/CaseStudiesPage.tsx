@@ -56,7 +56,7 @@ const CaseStudiesPage = () => {
       industry: "utilities",
       description: "Built an intelligent chatbot system that answers queries about NZ tenancy regulations, providing instant accurate information to users.",
       image: tenancy,
-      link: "https://tenancymatenz.zapier.app/",
+      link: "https://blakes-ai-bots.vercel.app/",
       technologies: ["OpenAI API", "Zapier", "RAG", "NLP"],
       results: [
         "95% query accuracy rate",
@@ -96,26 +96,26 @@ const CaseStudiesPage = () => {
   const testimonials = [
     {
       id: 1,
-      name: "N/A",
-      position: "N/A",
+      name: "Brittany Brand",
+      position: "Student",
       company: "N/A",
-      content: "This could be you, book a free session",
+      content: "I tried NCEA Navigator and it actually really helped explain concepts in an understandable way.",
       image: "/images/testimonial-3.jpg"
     },
     {
       id: 2,
       name: "Dannielle Innes",
-      position: "University Student",
+      position: "Beauty Enthusiast",
       company: "N/A",
-      content: "As a student, finding alternative products with Glow4Less has helped me save money. It was easy as to use.",
+      content: "Finding alternative products with Glow4Less has helped me save money. It was easy as to use.",
       image: quote2
     },
     {
       id: 3,
-      name: "N/A",
-      position: "N/A",
+      name: "Dave Thompson",
+      position: "Tenant",
       company: "N/A",
-      content: "This could be you, book a free session",
+      content: "Tenancy Mate helped me understand my rights quickly and easily. ",
       image: "/images/testimonial-3.jpg"
     }
   ];
@@ -172,15 +172,6 @@ const CaseStudiesPage = () => {
                   <h2>{study.title}</h2>
                   <p>{study.description}</p>
                   
-                  <div className="technologies">
-                    <h3>Technologies Used</h3>
-                    <ul className="tech-list">
-                      {study.technologies.map(tech => (
-                        <li key={tech}>{tech}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  
                   <div className="results">
                     <h3>Key Results</h3>
                     <ul className="results-list">
@@ -219,45 +210,6 @@ const CaseStudiesPage = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section skills-section">
-        <div className="container">
-          <h2 className="section-title">Our AI Expertise</h2>
-          <div className="skills-container">
-            <div className="skills-category">
-              <div className="skills-grid">
-                <div className="skill-item card">
-                  <h4>Deep Learning</h4>
-                  <ul>
-                    <li>TensorFlow</li>
-                    <li>PyTorch</li>
-                    <li>Neural Networks</li>
-                    <li>Computer Vision</li>
-                  </ul>
-                </div>
-                <div className="skill-item card">
-                  <h4>Large Language Models</h4>
-                  <ul>
-                    <li>GPT Models</li>
-                    <li>Retrieval Augmented Generation</li>
-                    <li>Natural Language Processing</li>
-                    <li>Sentiment Analysis</li>
-                  </ul>
-                </div>
-                <div className="skill-item card">
-                  <h4>Machine Learning</h4>
-                  <ul>
-                    <li>Scikit-learn</li>
-                    <li>Statistical Analysis</li>
-                    <li>Feature Engineering</li>
-                    <li>Model Optimization</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

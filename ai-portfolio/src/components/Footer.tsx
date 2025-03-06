@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import '../styles/Footer.css';
 
 const Footer = () => {
@@ -30,13 +30,10 @@ const Footer = () => {
             <div className="footer-links-column">
               <h3>Connect</h3>
               <div className="social-links">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/blake-harkness/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <FaLinkedin />
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                  <FaGithub />
-                </a>
-                <a href="mailto:contact@harknessai.com" aria-label="Email">
+                <a href="mailto:blake.ac.harkness@gmail.com" aria-label="Email">
                   <FaEnvelope />
                 </a>
               </div>

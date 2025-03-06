@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from 'react';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import '../styles/ContactPage.css';
 
 const ContactPage: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,6 +20,10 @@ const ContactPage: React.FC = () => {
     message: ''
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -29,22 +32,43 @@ const ContactPage: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setFormStatus({
-      submitted: true,
-      success: true,
-      message: 'Thank you for your message! I will get back to you soon.'
-    });
-    
-    // Reset form after successful submission
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+
+    try {
+      if (!formRef.current) return;
+
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setFormStatus({
+        submitted: true,
+        success: true,
+        message: 'Thank you for your message! I will get back to you soon.'
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setFormStatus({
+        submitted: true,
+        success: false,
+        message: 'There was an error sending your message. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const fadeIn = {
@@ -108,7 +132,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="contact-details">
                     <h3>Email</h3>
-                    <p><a href="mailto:contact@harknessai.com">contact@harknessai.com</a></p>
+                    <p><a href="mailto:blake.ac.harkness@gmail.com">blake.ac.harkness@gmail.com</a></p>
                   </div>
                 </div>
                 
@@ -118,7 +142,17 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="contact-details">
                     <h3>Phone</h3>
-                    <p><a href="tel:+447123456789">+44 7123 456 789</a></p>
+                    <p><a href="tel:+640275183692">+64 027 518 3692</a></p>
+                  </div>
+                </div>
+
+                <div className="contact-method">
+                  <div className="icon-wrapper">
+                    <FaLinkedin className="contact-icon" />
+                  </div>
+                  <div className="contact-details">
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/blake-harkness/" target="_blank" rel="noopener noreferrer">Blake Harkness</a></p>
                   </div>
                 </div>
                 
@@ -128,32 +162,17 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="contact-details">
                     <h3>Location</h3>
-                    <p>London, United Kingdom</p>
+                    <p>Christchurch, New Zealand</p>
                   </div>
-                </div>
-              </div>
-              
-              <div className="social-links">
-                <h3>Connect With Me</h3>
-                <div className="social-icons">
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <FaLinkedin />
-                  </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <FaTwitter />
-                  </a>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <FaGithub />
-                  </a>
                 </div>
               </div>
               
               <div className="availability">
                 <h3>Availability</h3>
-                <p>Currently available for new projects and consultations.</p>
+                <p>I'm currently available for new projects and consulting engagements.</p>
                 <div className="availability-indicator">
-                  <span className="status-dot"></span>
-                  <span className="status-text">Available for work</span>
+                  <div className="status-dot"></div>
+                  <span className="status-text">Available for Work</span>
                 </div>
               </div>
             </motion.div>
@@ -175,7 +194,7 @@ const ContactPage: React.FC = () => {
                   <p>{formStatus.message}</p>
                 </div>
               ) : (
-                <form className="contact-form" onSubmit={handleSubmit}>
+                <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="name">Your Name</label>
                     <input
@@ -232,8 +251,12 @@ const ContactPage: React.FC = () => {
                     ></textarea>
                   </div>
                   
-                  <button type="submit" className="submit-button">
-                    Send Message
+                  <button 
+                    type="submit" 
+                    className="submit-button"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               )}

@@ -348,6 +348,13 @@
   box-shadow: 0 6px 15px rgba(58, 134, 255, 0.3);
 }
 
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 .form-success-message {
   text-align: center;
   padding: 3rem 2rem;
