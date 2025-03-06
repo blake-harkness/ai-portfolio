@@ -23,6 +23,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
   margin-top: 3rem;
+  width: 100%;
 }
 
 .service-card {
@@ -35,6 +36,8 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  width: 100%;
+  min-width: 0;
 }
 
 .service-card::before {
@@ -411,6 +414,8 @@
 @media (max-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 0 1rem;
   }
 
   .process-grid {
@@ -434,7 +439,9 @@
 
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
   }
 
   .process-grid {
@@ -455,6 +462,37 @@
 
   .testimonials-grid {
     grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .service-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    padding: 0 0.75rem;
+  }
+
+  .service-card {
+    padding: 1.25rem;
   }
 }
 
