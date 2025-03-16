@@ -1,0 +1,423 @@
+.roady-demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
+}
+
+.roady-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.roady-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.roady-logo img {
+  height: 50px;
+}
+
+.roady-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.roady-title h1 {
+  color: #ff7b54;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.roady-title p {
+  color: #666;
+  margin: 0;
+}
+
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.messages-container {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 600px;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.message.user-message {
+  justify-content: flex-end;
+}
+
+.message.bot-message {
+  justify-content: flex-start;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 1rem;
+  border-radius: 18px;
+  position: relative;
+  color: #333;
+}
+
+.user-message .message-content {
+  background-color: #f0f0f0;
+  border-bottom-right-radius: 4px;
+}
+
+.bot-message .message-content {
+  background-color: #f8f9fa;
+  border-bottom-left-radius: 4px;
+}
+
+.message-timestamp {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+  text-align: right;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  min-width: 64px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background-color: #ff7b54;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  }
+  40% { 
+    transform: scale(1.0);
+  }
+}
+
+/* Markdown styles */
+.message-content h1,
+.message-content h2,
+.message-content h3,
+.message-content h4,
+.message-content h5,
+.message-content h6 {
+  margin-top: 0.75em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+.message-content h3 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+  margin-top: 1em;
+}
+
+.message-content strong {
+  font-weight: 600;
+}
+
+.message-content ul,
+.message-content ol {
+  margin: 0.3em 0;
+  padding-left: 1.5em;
+}
+
+.message-content li {
+  margin: 0.15em 0;
+}
+
+.message-content p {
+  margin: 0.3em 0;
+}
+
+.message-content p:empty {
+  display: none;
+}
+
+.message-content > *:first-child {
+  margin-top: 0;
+}
+
+.message-content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Rest of your existing CSS for other components */
+
+.suggestion-section {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+}
+
+.suggestion-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.suggestion-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.suggestion-button {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.suggestion-button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+}
+
+.suggestion-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-container {
+  display: flex;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  background-color: white;
+}
+
+.message-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.message-input:focus:not(:disabled) {
+  border-color: #ff7b54;
+}
+
+.message-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.send-button {
+  background-color: #ff7b54;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 0.75rem 1.5rem;
+  margin-left: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  min-width: 100px;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #e86a43;
+}
+
+.send-button:disabled {
+  background-color: #ffb096;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .roady-demo-container {
+    padding: 1rem;
+  }
+  
+  .message-content {
+    max-width: 85%;
+  }
+  
+  .suggestion-buttons {
+    flex-direction: column;
+  }
+  
+  .suggestion-button {
+    width: 100%;
+  }
+}
+
+.loading-dots {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  align-items: center;
+}
+
+.loading-dots .dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ff7b54;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.loading-dots .dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots .dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  }
+  40% { 
+    transform: scale(1.0);
+  }
+}
+
+.message-text {
+  white-space: pre-wrap;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+/* Markdown styles */
+.message-text h1,
+.message-text h2,
+.message-text h3,
+.message-text h4,
+.message-text h5,
+.message-text h6 {
+  margin-top: 0.75em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+.message-text h3 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+  margin-top: 1em;
+}
+
+.message-text strong {
+  font-weight: 600;
+}
+
+.message-text ul,
+.message-text ol {
+  margin: 0.3em 0;
+  padding-left: 1.5em;
+}
+
+.message-text li {
+  margin: 0.15em 0;
+}
+
+.message-text p {
+  margin: 0.3em 0;
+}
+
+.message-text p:empty {
+  display: none;
+}
+
+.message-text > *:first-child {
+  margin-top: 0;
+}
+
+.message-text > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Reduce spacing between sections */
+.message-text h3:not(:first-child) {
+  margin-top: 1.2em;
+}
+
+/* Ensure consistent text color */
+.message.bot .message-text,
+.message.user .message-text {
+  color: #333;
+}
+
+/* Adjust message content spacing */
+.message-content {
+  max-width: 70%;
+  padding: 1rem;
+  border-radius: 18px;
+  position: relative;
+  color: #333;
+}
+
+/* Remove extra spacing from ReactMarkdown container */
+.message-text > div > *:first-child {
+  margin-top: 0;
+}
+
+.message-text > div > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Hide empty paragraphs */
+.message-text p:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Adjust list item spacing */
+.message-text li p {
+  margin: 0;
+} 
