@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaCheck, FaLightbulb, FaRobot, FaCode, FaChartLine, FaPen, FaCogs } from 'react-icons/fa';
+import { FaArrowRight, FaLightbulb, FaRobot, FaCode, FaChartLine, FaPen, FaCogs } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../styles/HowICanHelpPage.css';
 
@@ -197,17 +197,6 @@ const HowICanHelpPage: React.FC = () => {
                 </div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-                <div className="benefits">
-                  <h4>Key Benefits</h4>
-                  <ul>
-                    {service.benefits.map((benefit, index) => (
-                      <li key={index}>
-                        <FaCheck className="check-icon" />
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
                 <Link to="/contact" className="cta-button">
                   {service.cta} <FaArrowRight className="arrow-icon" />
                 </Link>

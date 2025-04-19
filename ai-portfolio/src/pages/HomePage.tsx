@@ -1,5 +1,5 @@
 import Hero from '../components/Hero';
-import { FaRobot, FaCode, FaQuoteLeft, FaArrowRight, FaChalkboardTeacher } from 'react-icons/fa';
+import { FaRobot, FaCode, FaArrowRight, FaChalkboardTeacher } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../styles/HomePage.css';
 import '../styles/AboutPage.css';
@@ -23,65 +23,10 @@ const HomePage = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      quote: "This could be your success story. Book a free consultation to discuss how AI can transform your business.",
-      author: "Your Name Here",
-      position: "Book a Free Session"
-    },
-    {
-      quote: "Ready to leverage AI for your business? Let's explore how we can create innovative solutions tailored to your needs.",
-      author: "Future Client",
-      position: "Schedule a Consultation"
-    },
-    {
-      quote: "Join our growing list of successful AI implementations. Start your journey towards AI-driven business transformation today.",
-      author: "Next Success Story",
-      position: "Contact Now"
-    }
-  ];
-
   return (
     <div className="page home-page">
       <Hero />
       
-      <section className="section services-section">
-        <div className="container">
-          <h2 className="section-title">Our Services</h2>
-          <div className="services-grid services-grid-two">
-            {services.map((service, index) => (
-              <div key={index} className={`service-card card float float-delay-${index + 1}`}>
-                <div className="service-icon">{service.icon}</div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section testimonials-section">
-        <div className="container">
-          <h2 className="section-title">Client Success Stories</h2>
-          <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card card">
-                <div className="quote-icon">
-                  <FaQuoteLeft />
-                </div>
-                <blockquote className="testimonial-quote">
-                  {testimonial.quote}
-                </blockquote>
-                <div className="testimonial-author">
-                  <h4>{testimonial.author}</h4>
-                  <p>{testimonial.position}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section about-section">
         <div className="container">
           <div className="about-content-wrapper">
@@ -100,6 +45,21 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      
+      <section className="section services-section">
+        <div className="container">
+          <h2 className="section-title">Our Services</h2>
+          <div className="services-grid services-grid-two">
+            {services.map((service, index) => (
+              <div key={index} className="service-card card">
+                <div className="service-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -161,8 +161,8 @@ const CaseStudiesPage = () => {
           </div>
 
           <div className="case-studies-grid">
-            {filteredCaseStudies.map((study, index) => (
-              <article key={study.id} className={`case-study-card card float float-delay-${index % 3 + 1}`}>
+            {filteredCaseStudies.map((study) => (
+              <article key={study.id} className="case-study-card card">
                 <div className="case-study-image">
                   <img src={study.image} alt={study.title} />
                   <span className="category-tag">{study.category}</span>
@@ -171,15 +171,6 @@ const CaseStudiesPage = () => {
                 <div className="case-study-content">
                   <h2>{study.title}</h2>
                   <p>{study.description}</p>
-                  
-                  <div className="results">
-                    <h3>Key Results</h3>
-                    <ul className="results-list">
-                      {study.results.map(result => (
-                        <li key={result}>{result}</li>
-                      ))}
-                    </ul>
-                  </div>
                   
                   <a href={study.link} target="_blank" rel="noopener noreferrer" className="button button-primary view-project-btn">
                     View Project
@@ -195,8 +186,8 @@ const CaseStudiesPage = () => {
         <div className="container">
           <h2 className="section-title">Client Testimonials</h2>
           <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <div key={testimonial.id} className={`testimonial-card card float float-delay-${index + 1}`}>
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="testimonial-card card">
                 <div className="quote-icon">
                   <FaQuoteLeft />
                 </div>

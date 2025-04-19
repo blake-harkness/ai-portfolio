@@ -132,7 +132,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="contact-details">
                     <h3>Email</h3>
-                    <p><a href="mailto:blake.ac.harkness@gmail.com">blake.ac.harkness@gmail.com</a></p>
+                    <p><a href="mailto:blake@harknessai.nz">blake@harknessai.nz</a></p>
                   </div>
                 </div>
                 
@@ -300,18 +300,8 @@ const ContactPage: React.FC = () => {
             </motion.div>
             
             <motion.div className="faq-item" variants={fadeIn}>
-              <h3>How long does a typical AI project take?</h3>
-              <p>Project timelines vary based on complexity and scope. Simple AI integrations might take 2-4 weeks, while more complex custom solutions can take 2-3 months. I'll provide a detailed timeline during our initial consultation.</p>
-            </motion.div>
-            
-            <motion.div className="faq-item" variants={fadeIn}>
               <h3>Do you offer ongoing support after project completion?</h3>
               <p>Yes, I offer various support packages to ensure your AI solution continues to perform optimally. This includes monitoring, updates, and further training of models as needed.</p>
-            </motion.div>
-            
-            <motion.div className="faq-item" variants={fadeIn}>
-              <h3>What industries do you specialize in?</h3>
-              <p>I've worked across various sectors including healthcare, finance, retail, and education. My approach is adaptable to different industry contexts, focusing on the specific AI needs of your business.</p>
             </motion.div>
             
             <motion.div className="faq-item" variants={fadeIn}>

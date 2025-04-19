@@ -1,5 +1,5 @@
 .home-page .section {
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 
 .section-title {
@@ -12,6 +12,7 @@
 /* Services Section */
 .services-section {
   background-color: var(--background-color);
+  text-align: center;
 }
 
 .capabilities-section {
@@ -171,7 +172,7 @@
 }
 
 .about-text {
-  text-align: center;
+  text-align: left;
 }
 
 .about-description {
@@ -310,9 +311,11 @@
 
 .services-grid-two {
   display: grid;
-  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 2rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .services-grid-two .service-card {
@@ -414,85 +417,221 @@
 @media (max-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 0 1rem;
+    gap: 1.5rem;
   }
-
-  .process-grid {
-    grid-template-columns: repeat(2, 1fr);
+  
+  .section-title {
+    font-size: 2rem;
   }
-
+  
+  .featured-work-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .services-section,
+  .about-section,
+  .testimonials-section,
+  .featured-work-section,
+  .cta-section {
+    padding: 4rem 1.5rem;
+  }
+  
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
-
+  
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .about-text {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .about-image {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .hero-action {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 400px;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .primary-button, 
+  .secondary-button {
+    width: 100%;
+    text-align: center;
+  }
+  
   .services-grid-two {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
+  .hero-section {
+    padding: 4rem 1.5rem;
   }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 0 1rem;
+  
+  .hero-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
   }
-
-  .process-grid {
-    grid-template-columns: 1fr;
+  
+  .hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
   }
-
-  .home-page .section {
-    padding: 4rem 0;
-  }
-
-  .about-description p {
-    font-size: 1rem;
-  }
-
-  .services-grid-two {
-    grid-template-columns: 1fr;
-  }
-
+  
+  .services-grid,
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
-
+  
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
   .service-card {
     padding: 1.5rem;
-    width: 100%;
   }
-
-  .service-icon {
-    font-size: 2rem;
-    width: 60px;
-    height: 60px;
-    margin-bottom: 1.25rem;
-  }
-
+  
   .service-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
-
-  .service-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
+  
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+  
+  .testimonial-text {
+    font-size: 1rem;
+  }
+  
+  .about-image {
+    max-width: 300px;
+  }
+  
+  .featured-work-item-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .primary-button, 
+  .secondary-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  nav ul {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.9rem;
+  }
+  
+  .services-grid-two {
+    grid-template-columns: 1fr;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .services-grid {
-    padding: 0 0.75rem;
+  .hero-content h1 {
+    font-size: 1.8rem;
   }
-
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .services-section,
+  .about-section,
+  .testimonials-section,
+  .featured-work-section,
+  .cta-section {
+    padding: 3rem 1rem;
+  }
+  
   .service-card {
-    padding: 1.25rem;
+    padding: 1.2rem;
+  }
+  
+  .service-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .about-image {
+    max-width: 250px;
+  }
+  
+  .testimonial-card {
+    padding: 1.2rem;
+  }
+  
+  .featured-work-item-content {
+    padding: 1.2rem;
+  }
+  
+  .featured-work-item-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav ul.show {
+    display: flex;
+  }
+  
+  .services-grid-two {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
   }
 }
 

@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import '../styles/GuidePage.css';
 import emailjs from '@emailjs/browser';
 import { FaLinkedin, FaYoutube } from 'react-icons/fa';
-import { IoMdClose } from 'react-icons/io';
 
 const GuidePage = () => {
   const [email, setEmail] = useState('');
