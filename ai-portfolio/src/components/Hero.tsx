@@ -40,8 +40,8 @@ const Hero = () => {
         </p>
         
         <div className="cta-container">
-          <a href="case-studies" className="button button-primary">
-            View Our Solutions
+          <a href="how-i-can-help" className="button button-primary">
+            View Our Services
           </a>
           <a href="contact" className="button button-secondary">
             Get in Touch

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, ReactNode } from 'react';
 import '../styles/GuidePage.css';
 import emailjs from '@emailjs/browser';
 import { FaLinkedin, FaYoutube } from 'react-icons/fa';
@@ -6,12 +6,13 @@ import { FaLinkedin, FaYoutube } from 'react-icons/fa';
 const GuidePage = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitMessage, setSubmitMessage] = useState<ReactNode>('');
   const [messageType, setMessageType] = useState('');
   
   // Form references
   const formRef = useRef<HTMLFormElement>(null);
   const subscribeFormRef = useRef<HTMLFormElement>(null);
+  const subscribeFormContainerRef = useRef<HTMLDivElement>(null);
   
   // Contact form state
   const [contactFormData, setContactFormData] = useState({
@@ -27,8 +28,11 @@ const GuidePage = () => {
   });
   const [isContactSubmitting, setIsContactSubmitting] = useState(false);
 
-  // ROI Calculator state
+  // Modal states
   const [showCalculator, setShowCalculator] = useState(false);
+  const [isHighlightingSubscribe, setIsHighlightingSubscribe] = useState(false);
+  
+  // ROI Calculator state
   const [calculatorData, setCalculatorData] = useState({
     peopleCount: 50,
     timePercentage: 15,
@@ -76,6 +80,26 @@ const GuidePage = () => {
     calculateROI(); // Initial calculation
   };
 
+  const handleScrollToSubscribe = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Scroll to the subscription section
+    if (subscribeFormContainerRef.current) {
+      subscribeFormContainerRef.current.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+      
+      // Add highlight effect
+      setIsHighlightingSubscribe(true);
+      
+      // Remove highlight after 3 seconds
+      setTimeout(() => {
+        setIsHighlightingSubscribe(false);
+      }, 3000);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -91,7 +115,18 @@ const GuidePage = () => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       
-      setSubmitMessage('Thanks for subscribing! Check your inbox soon.');
+      setSubmitMessage(
+        <>
+          Thanks for subscribing! Here's your AI Tool Stack: <a 
+            href="https://docs.google.com/document/d/10CyspKZHt3QSGtgc1kA3DEg_YpRBhRTQ35geQN0X4og/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tool-stack-link"
+          >
+            View Blake's AI Tool Stack
+          </a>
+        </>
+      );
       setMessageType('success');
       setEmail('');
     } catch (error) {
@@ -188,11 +223,11 @@ const GuidePage = () => {
         <div className="resources-grid">
           <div className="resource-card">
             <div className="resource-image">
-              <img src="/resources/prompts.svg" alt="Top 50 Useful Prompts" />
+              <img src="/resources/prompts.svg" alt="My Current AI Tool Stack" />
             </div>
-            <h3>Top 50 Useful Prompts</h3>
-            <p>A curated collection of proven prompts to get the most out of ChatGPT, Claude, and other AI assistants for business tasks.</p>
-            <a href="#" className="resource-button">Download</a>
+            <h3>My Current AI Tool Stack</h3>
+            <p>Discover the AI tools I use daily to enhance productivity, automate tasks, and solve complex problems for businesses.</p>
+            <a href="#" className="resource-button" onClick={handleScrollToSubscribe}>Download</a>
           </div>
           
           <div className="resource-card">
@@ -211,16 +246,19 @@ const GuidePage = () => {
         <div className="resources-content">
           <div className="resource-text">
             <h3>FREE AI Starter Kit: Checklist + Tools Guide</h3>
-            <p>Stay ahead of the curve. Get curated AI news, step-by-step automation guides, and productivity hacks you won't find anywhere else.</p>
+            <p>Stay ahead of the curve. Get curated AI news, step-by-step automation guides, and reviews of the latest AI tools.</p>
             <ul className="benefits-list">
-              <li>Decode the latest AI news & understand what matters</li>
+              <li>Latest AI news with the garbage filtered out</li>
               <li>Master useful automations with step-by-step guides</li>
               <li>Gain early access to cutting-edge AI tools & resources</li>
               <li>Boost your productivity with practical AI tips (personal & professional)</li>
               <li>Get exclusive insights from my AI projects & experiments</li>
             </ul>
           </div>
-          <div className="subscribe-form">
+          <div 
+            className={`subscribe-form ${isHighlightingSubscribe ? 'highlight-subscribe' : ''}`}
+            ref={subscribeFormContainerRef}
+          >
             <form ref={subscribeFormRef} onSubmit={handleSubmit}>
               <input 
                 type="email" 
@@ -230,6 +268,7 @@ const GuidePage = () => {
                 onChange={(e) => setEmail(e.target.value)} 
                 required 
                 disabled={isSubmitting}
+                className={isHighlightingSubscribe ? 'highlight-input' : ''}
               />
               <input
                 type="hidden"
@@ -258,7 +297,7 @@ const GuidePage = () => {
               />
               <button 
                 type="submit" 
-                className="subscribe-btn" 
+                className={`subscribe-btn ${isHighlightingSubscribe ? 'highlight-button' : ''}`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe'}
@@ -274,19 +313,11 @@ const GuidePage = () => {
       </section>
 
       <section className="reviews-section">
-        <h2>What People Are Saying</h2>
+        <h2>What People Say About Me</h2>
         <div className="reviews-grid">
           <div className="review-card">
-            <p>"Nice work Blake. A great demo of how simple it is these days to get underway with chatbots. Could be a very useful supplement to lawyers' websites or to provide clients with access to internal knowledge bases."</p>
+            <p>"Nice work Blake. A great demo of how simple it is these days to get underway with chatbots."</p>
             <div className="reviewer">— Mark Donovan</div>
-          </div>
-          <div className="review-card">
-            <p>"Super cool demo, Blake — I love how you broke this down so fast and clean."</p>
-            <div className="reviewer">— Zach Ross</div>
-          </div>
-          <div className="review-card">
-            <p>"Hey Blake, thanks for sharing this, really helpful for my son doing NCEA1..."</p>
-            <div className="reviewer">— Zac Pullen</div>
           </div>
           <div className="review-card">
             <p>"Finding alternative products with Glow4Less has helped me save money. It was easy as to use."</p>
@@ -297,8 +328,24 @@ const GuidePage = () => {
             <div className="reviewer">— Dave Thompson</div>
           </div>
           <div className="review-card">
+            <p>"Super cool demo, Blake — I love how you broke this down so fast and clean."</p>
+            <div className="reviewer">— Zach Ross</div>
+          </div>
+          <div className="review-card">
+            <p>"Hey Blake, thanks for sharing this, really helpful for my son doing NCEA1."</p>
+            <div className="reviewer">— Zac Pullen</div>
+          </div>
+          <div className="review-card">
             <p>"Amazing man I love these kind of tutorials"</p>
             <div className="reviewer">— Shoaib Hussain</div>
+          </div>
+          <div className="review-card">
+            <p>"Awesome share Blake. Appreciate it"</p>
+            <div className="reviewer">— Bruce Waller</div>
+          </div>
+          <div className="review-card">
+            <p>"Had a 30min teams call that really opened my eyes to the AI world. Thank you Blake!"</p>
+            <div className="reviewer">— Brittany Brand</div>
           </div>
         </div>
       </section>

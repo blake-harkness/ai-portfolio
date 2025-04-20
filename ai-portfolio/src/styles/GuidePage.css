@@ -556,6 +556,24 @@
   border: 1px solid #f5c6cb;
 }
 
+.tool-stack-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: var(--primary-color, #3a86ff);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tool-stack-link:hover {
+  background-color: var(--secondary-color, #8338ec);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Contact Section - white background (fifth section) */
 .contact-section {
   padding: 4rem 2rem;
@@ -878,7 +896,7 @@
 }
 
 .close-button {
-  background: #ff3b5c;
+  background: rgba(255, 255, 255, 0.2);
   border: 2px solid white;
   color: white;
   font-size: 2rem;
@@ -906,7 +924,7 @@
 }
 
 .close-button:hover {
-  background-color: #ff1a43;
+  background-color: rgba(255, 255, 255, 0.3);
   transform: scale(1.1);
 }
 
@@ -994,7 +1012,7 @@
   appearance: none;
   width: 20px;
   height: 20px;
-  background: linear-gradient(to right, var(--gradient-start, #3a86ff), var(--gradient-end, #8338ec));
+  background: var(--primary-color, #3a86ff);
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -1040,7 +1058,7 @@
 }
 
 .calculate-button {
-  background: linear-gradient(to right, var(--gradient-start, #3a86ff), var(--gradient-end, #8338ec));
+  background: var(--primary-color, #3a86ff);
   color: white;
   border: none;
   padding: 0.8rem;
@@ -1063,8 +1081,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  background-color: #121235;
-  color: white;
+  background-color: white;
+  color: #333;
   border-radius: 0 0 1rem 0;
   overflow-y: auto;
 }
@@ -1076,16 +1094,16 @@
 }
 
 .result-box {
-  background-color: #181842;
+  background-color: #f5f7ff;
   border-radius: 1rem;
   padding: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .result-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .result-box h3 {
@@ -1094,53 +1112,37 @@
   margin-bottom: 0.5rem;
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-weight: 500;
-  color: #a8b1ff;
+  color: #555;
 }
 
 .result-box.highlight {
-  background-color: #2b1f50;
+  background-color: #eef3ff;
   position: relative;
-  border: 2px solid #584bbd;
+  border: 1px solid var(--primary-color, #3a86ff);
 }
 
-.result-box.highlight::before {
-  content: '★';
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  color: #ff6b6b;
-  font-size: 1.2rem;
-}
-
-.result-box.opportunity {
-  background-color: #2b1f50;
-  grid-column: 1 / -1;
+.result-box.highlight h3 {
+  color: var(--primary-color, #3a86ff);
 }
 
 .result-amount {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0.5rem 0;
-  color: white;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: #333;
 }
 
 .result-fte {
   font-size: 1.2rem;
-  color: #9ca3af;
-}
-
-.result-detail {
-  font-size: 0.9rem;
-  color: #9ca3af;
-  margin-bottom: 0.5rem;
+  color: #666;
 }
 
 .savings-summary {
-  background: linear-gradient(135deg, #2b1f50, #584bbd);
+  background-color: #eefbef;
   border-radius: 1rem;
   padding: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #4CAF50;
 }
 
 .savings-summary h3 {
@@ -1149,27 +1151,19 @@
   margin-bottom: 0.5rem;
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-weight: 500;
-  color: #a8b1ff;
+  color: #4CAF50;
 }
 
 .savings-amount {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0.5rem 0;
-  color: #6effb1;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: #4CAF50;
 }
 
 .savings-percent {
   font-size: 1.2rem;
-  color: #9ca3af;
-}
-
-.opportunity-note {
-  font-size: 0.8rem;
-  color: #6d7280;
-  font-style: italic;
-  margin-top: 0.5rem;
+  color: #666;
 }
 
 .result-visual {
@@ -1177,9 +1171,10 @@
   display: flex;
   flex-direction: column;
   min-height: 250px;
-  background-color: #181842;
+  background-color: #f5f7ff;
   border-radius: 1rem;
   padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .result-visual h3 {
@@ -1188,7 +1183,7 @@
   margin-bottom: 1.5rem;
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-weight: 500;
-  color: #a8b1ff;
+  color: #555;
   text-align: center;
 }
 
@@ -1226,11 +1221,13 @@
 }
 
 .chart-column.current {
-  background: linear-gradient(180deg, #b83450, #f25c54);
+  background: #e0e7ff;
+  border: 1px solid #c7d2fe;
+  border-bottom: none;
 }
 
 .chart-column.ai {
-  background: linear-gradient(180deg, #5379b8, #54c1f2);
+  background: var(--primary-color, #3a86ff);
 }
 
 .column-label {
@@ -1240,33 +1237,39 @@
   font-weight: 600;
   text-align: center;
   width: 100%;
+  color: #555;
 }
 
 .column-value {
   font-size: 1.2rem;
   font-weight: 700;
   padding: 0.75rem 0;
+  color: #333;
+}
+
+.chart-column.ai .column-value {
   color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .calculator-cta {
   text-align: center;
   margin-top: 1rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #181842, #2b1f50);
+  background-color: #f5f7ff;
   border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .calculator-cta p {
   margin-bottom: 1rem;
   font-size: 1.1rem;
+  color: #555;
 }
 
 .contact-cta-button {
   display: inline-block;
   padding: 0.75rem 2rem;
-  background: linear-gradient(to right, var(--gradient-start, #3a86ff), var(--gradient-end, #8338ec));
+  background: var(--primary-color, #3a86ff);
   color: white;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -1311,5 +1314,46 @@
 
   .chart-column {
     width: 80px;
+  }
+}
+
+/* Highlight effect for subscription form */
+.highlight-subscribe {
+  animation: pulse 1.5s ease-in-out infinite;
+  border: 2px solid #4CAF50;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+  transition: all 0.3s ease;
+}
+
+.highlight-input {
+  border-color: #4CAF50 !important;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6) !important;
+}
+
+.highlight-button {
+  animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 } 

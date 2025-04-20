@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import '../styles/ContactPage.css';
@@ -133,16 +133,6 @@ const ContactPage: React.FC = () => {
                   <div className="contact-details">
                     <h3>Email</h3>
                     <p><a href="mailto:blake@harknessai.nz">blake@harknessai.nz</a></p>
-                  </div>
-                </div>
-                
-                <div className="contact-method">
-                  <div className="icon-wrapper">
-                    <FaPhone className="contact-icon" />
-                  </div>
-                  <div className="contact-details">
-                    <h3>Phone</h3>
-                    <p><a href="tel:+640275183692">+64 027 518 3692</a></p>
                   </div>
                 </div>
 

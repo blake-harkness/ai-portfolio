@@ -59,15 +59,6 @@ const Navbar = () => {
           </li>
           <li>
             <Link 
-              to="/case-studies" 
-              className={isActive('/case-studies') ? 'active' : ''}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Case Studies
-            </Link>
-          </li>
-          <li>
-            <Link 
               to="/contact" 
               className={isActive('/contact') ? 'active' : ''}
               onClick={() => setIsMenuOpen(false)}
