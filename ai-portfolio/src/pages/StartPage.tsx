@@ -3,16 +3,9 @@ import '../styles/GuidePage.css';
 import emailjs from '@emailjs/browser';
 import { FaLinkedin, FaYoutube } from 'react-icons/fa';
 
-const GuidePage = () => {
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState<ReactNode>('');
-  const [messageType, setMessageType] = useState('');
-  
+const StartPage = () => {
   // Form references
   const formRef = useRef<HTMLFormElement>(null);
-  const subscribeFormRef = useRef<HTMLFormElement>(null);
-  const subscribeFormContainerRef = useRef<HTMLDivElement>(null);
   
   // Contact form state
   const [contactFormData, setContactFormData] = useState({
@@ -30,7 +23,6 @@ const GuidePage = () => {
 
   // Modal states
   const [showCalculator, setShowCalculator] = useState(false);
-  const [isHighlightingSubscribe, setIsHighlightingSubscribe] = useState(false);
   
   // ROI Calculator state
   const [calculatorData, setCalculatorData] = useState({
@@ -78,64 +70,6 @@ const GuidePage = () => {
     e.preventDefault();
     setShowCalculator(true);
     calculateROI(); // Initial calculation
-  };
-
-  const handleScrollToSubscribe = (e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    // Scroll to the subscription section
-    if (subscribeFormContainerRef.current) {
-      subscribeFormContainerRef.current.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
-      });
-      
-      // Add highlight effect
-      setIsHighlightingSubscribe(true);
-      
-      // Remove highlight after 3 seconds
-      setTimeout(() => {
-        setIsHighlightingSubscribe(false);
-      }, 3000);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitMessage('');
-    
-    try {
-      if (!subscribeFormRef.current) return;
-      
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        subscribeFormRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      );
-      
-      setSubmitMessage(
-        <>
-          Thanks for subscribing! Here's your AI Tool Stack: <a 
-            href="https://docs.google.com/document/d/10CyspKZHt3QSGtgc1kA3DEg_YpRBhRTQ35geQN0X4og/edit?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="tool-stack-link"
-          >
-            View Blake's AI Tool Stack
-          </a>
-        </>
-      );
-      setMessageType('success');
-      setEmail('');
-    } catch (error) {
-      console.error('Subscription error:', error);
-      setSubmitMessage('Failed to subscribe. Please try again later.');
-      setMessageType('error');
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   // Contact form handlers
@@ -189,7 +123,7 @@ const GuidePage = () => {
   return (
     <div className="guide-container">
       <header className="guide-header">
-        <h1>Blake | AI Guides</h1>
+        <h1>Blake Harkness</h1>
       </header>
 
       <section className="about-section">
@@ -218,6 +152,51 @@ const GuidePage = () => {
         </div>
       </section>
 
+      {/* Projects Section - NEW */}
+      <section className="projects-section">
+        <h2>Recent Projects</h2>
+        <div className="projects-grid">
+          <div className="project-card">
+            <div className="project-image">
+              <img src="/glow4less.png" alt="Glow 4 Less" />
+            </div>
+            <div className="project-content">
+              <h3>Glow 4 Less</h3>
+              <p>A beauty product comparison tool where users can upload a product, and the system analyzes its details and ingredients to suggest more affordable alternatives.</p>
+              <div className="project-button-container">
+                <a href="https://www.glow4less.nz/" target="_blank" rel="noopener noreferrer" className="project-link">Visit Website</a>
+              </div>
+            </div>
+          </div>
+          
+          <div className="project-card">
+            <div className="project-image">
+              <img src="/tenancymate.png" alt="Tenancy Mate" />
+            </div>
+            <div className="project-content">
+              <h3>Tenancy Mate</h3>
+              <p>A specialized RAG (Retrieval-Augmented Generation) chatbot focused on New Zealand tenancy law, providing accurate information and guidance to landlords and tenants.</p>
+              <div className="project-button-container">
+                <a href="https://blakes-ai-bots.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-link">Try the Chatbot</a>
+              </div>
+            </div>
+          </div>
+          
+          <div className="project-card">
+            <div className="project-image">
+              <img src="/datasift.png" alt="DataSift" />
+            </div>
+            <div className="project-content">
+              <h3>DataSift</h3>
+              <p>An AI-powered data analysis tool that executes Python code on CSV files to eliminate hallucinations and deliver accurate answers to mathematical and statistical questions about the data.</p>
+              <div className="project-button-container">
+                <span className="project-link wip-button">WIP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="free-resources-section">
         <h2>Free Resources</h2>
         <div className="resources-grid">
@@ -227,7 +206,7 @@ const GuidePage = () => {
             </div>
             <h3>My Current AI Tool Stack</h3>
             <p>Discover the AI tools I use daily to enhance productivity, automate tasks, and solve complex problems for businesses.</p>
-            <a href="#" className="resource-button" onClick={handleScrollToSubscribe}>Download</a>
+            <a href="https://docs.google.com/document/d/10CyspKZHt3QSGtgc1kA3DEg_YpRBhRTQ35geQN0X4og/edit?usp=sharing" className="resource-button" target="_blank" rel="noopener noreferrer">View Tool Stack</a>
           </div>
           
           <div className="resource-card">
@@ -237,77 +216,6 @@ const GuidePage = () => {
             <h3>AI ROI Calculator</h3>
             <p>Calculate the potential return on investment when implementing AI solutions in your business workflows.</p>
             <a href="#" className="resource-button" onClick={handleOpenCalculator}>Access Calculator</a>
-          </div>
-        </div>
-      </section>
-
-      <section className="resources-section">
-        <h2>Level Up Your AI Skills</h2>
-        <div className="resources-content">
-          <div className="resource-text">
-            <h3>FREE AI Starter Kit: Checklist + Tools Guide</h3>
-            <p>Stay ahead of the curve. Get curated AI news, step-by-step automation guides, and reviews of the latest AI tools.</p>
-            <ul className="benefits-list">
-              <li>Latest AI news with the garbage filtered out</li>
-              <li>Master useful automations with step-by-step guides</li>
-              <li>Gain early access to cutting-edge AI tools & resources</li>
-              <li>Boost your productivity with practical AI tips (personal & professional)</li>
-              <li>Get exclusive insights from my AI projects & experiments</li>
-            </ul>
-          </div>
-          <div 
-            className={`subscribe-form ${isHighlightingSubscribe ? 'highlight-subscribe' : ''}`}
-            ref={subscribeFormContainerRef}
-          >
-            <form ref={subscribeFormRef} onSubmit={handleSubmit}>
-              <input 
-                type="email" 
-                name="email"
-                placeholder="Your email address" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required 
-                disabled={isSubmitting}
-                className={isHighlightingSubscribe ? 'highlight-input' : ''}
-              />
-              <input
-                type="hidden"
-                name="to_name"
-                value="Blake"
-              />
-              <input
-                type="hidden"
-                name="from_name"
-                value={email.split('@')[0] || 'Subscriber'}
-              />
-              <input
-                type="hidden"
-                name="message"
-                value="New subscription to AI guides and newsletter"
-              />
-              <input
-                type="hidden"
-                name="reply_to"
-                value={email}
-              />
-              <input
-                type="hidden"
-                name="subject"
-                value="New AI Guide Subscription"
-              />
-              <button 
-                type="submit" 
-                className={`subscribe-btn ${isHighlightingSubscribe ? 'highlight-button' : ''}`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-              </button>
-              {submitMessage && (
-                <div className={`submit-message ${messageType}`}>
-                  {submitMessage}
-                </div>
-              )}
-            </form>
           </div>
         </div>
       </section>
@@ -626,4 +534,4 @@ const GuidePage = () => {
   );
 };
 
-export default GuidePage; 
+export default StartPage; 

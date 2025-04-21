@@ -9,6 +9,7 @@ import HowICanHelpPage from './pages/HowICanHelpPage';
 import RoadyDemoPage from './pages/RoadyDemoPage';
 import CleanerCarsDemoPage from './pages/CleanerCarsDemoPage';
 import GuidePage from './pages/GuidePage';
+import StartPage from './pages/StartPage';
 import { Analytics } from "@vercel/analytics/react"
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
       <div className="app">
         <Analytics />
         <Routes>
-          {/* Special route for the Guide page without navbar/footer */}
+          {/* Special routes without navbar/footer */}
           <Route path="/guide" element={<GuidePage />} />
+          <Route path="/start" element={<StartPage />} />
           
           {/* All other routes with standard layout */}
           <Route path="*" element={

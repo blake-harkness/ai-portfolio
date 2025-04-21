@@ -31,7 +31,7 @@ const HomePage = () => {
         <div className="container">
           <div className="about-content-wrapper">
             <div className="about-text">
-              <h2 className="section-title">About Harkness AI</h2>
+              <h2 className="section-title">About Me</h2>
               <div className="about-description">
                 <p>
                 At Harkness AI, we're passionate about harnessing the transformative power of artificial intelligence to solve real business challenges. 
@@ -51,7 +51,7 @@ const HomePage = () => {
       
       <section className="section services-section">
         <div className="container">
-          <h2 className="section-title">Our Services</h2>
+          <h2 className="section-title">My Services</h2>
           <div className="services-grid services-grid-two">
             {services.map((service, index) => (
               <div key={index} className="service-card card">
