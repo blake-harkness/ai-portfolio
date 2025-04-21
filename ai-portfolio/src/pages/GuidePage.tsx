@@ -34,7 +34,7 @@ const GuidePage = () => {
   
   // ROI Calculator state
   const [calculatorData, setCalculatorData] = useState({
-    peopleCount: 50,
+    peopleCount: 10,
     timePercentage: 15,
     aiTimePercentage: 5,
     avgSalary: 100000
@@ -347,6 +347,10 @@ const GuidePage = () => {
             <p>"Had a 30min teams call that really opened my eyes to the AI world. Thank you Blake!"</p>
             <div className="reviewer">— Brittany Brand</div>
           </div>
+          <div className="review-card">
+            <p>"Valuable share, thanks a bunch Blake"</p>
+            <div className="reviewer">— David Wagner</div>
+          </div>
         </div>
       </section>
 
@@ -437,7 +441,7 @@ const GuidePage = () => {
       {/* ROI Calculator Modal */}
       {showCalculator && (
         <div className="calculator-modal-overlay" onClick={(e) => e.target === e.currentTarget && setShowCalculator(false)}>
-          <div className="calculator-modal">
+          <div className="calculator-modal" style={{ maxHeight: '90vh', overflowY: 'auto' }}>
             <div className="calculator-header">
               <h2>AI ROI Calculator</h2>
               <button 
@@ -546,7 +550,7 @@ const GuidePage = () => {
                     className="reset-button"
                     onClick={() => {
                       setCalculatorData({
-                        peopleCount: 50,
+                        peopleCount: 10,
                         timePercentage: 15,
                         aiTimePercentage: 5,
                         avgSalary: 100000
