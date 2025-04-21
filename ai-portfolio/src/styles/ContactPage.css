@@ -533,4 +533,15 @@
   .faq-item {
     padding: 1.75rem;
   }
+}
+
+/* Add this rule for the full-width contact form */
+.contact-grid-full {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-grid-full .contact-form-container {
+  width: 100%;
 } 

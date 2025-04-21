@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaEnvelope, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import '../styles/ContactPage.css';
+import SEOHead from '../components/SEOHead';
 
 const ContactPage: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -22,6 +22,23 @@ const ContactPage: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Add structured data for the contact page
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      'name': 'Harkness AI Contact',
+      'url': 'https://www.harknessai.nz/contact',
+      'description': 'Contact Blake Harkness for AI solutions in New Zealand - based in Christchurch and serving clients across Auckland, Wellington, and nationwide.',
+      'areaServed': ['New Zealand', 'Christchurch', 'Auckland', 'Wellington'],
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -82,6 +99,13 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="contact-page">
+      <SEOHead 
+        title="Contact Me for AI Solutions in New Zealand" 
+        description="Contact Blake Harkness for AI solutions in Christchurch and across New Zealand. Specialized AI consulting and development services for NZ businesses."
+        keywords="Contact AI New Zealand, Christchurch AI Contact, Auckland AI Services, Wellington AI Consulting, New Zealand AI Development"
+        canonicalPath="/contact"
+      />
+      
       {/* Hero Section */}
       <section className="hero-section">
         <div className="particles-container">
@@ -95,7 +119,7 @@ const ContactPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            Let's Connect
+            Get in Touch
           </motion.h1>
           <motion.p 
             className="lead"
@@ -103,7 +127,7 @@ const ContactPage: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            Have a project in mind or want to explore how AI can transform your business? I'd love to hear from you.
+            Have a project in mind or want to explore how AI can transform your business? I provide AI services across New Zealand from my base in Christchurch.
           </motion.p>
         </div>
       </section>
@@ -111,62 +135,7 @@ const ContactPage: React.FC = () => {
       {/* Contact Section */}
       <section className="contact-section">
         <div className="container">
-          <div className="contact-grid">
-            {/* Contact Information */}
-            <motion.div 
-              className="contact-info"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-            >
-              <h2>Contact Information</h2>
-              <p className="contact-intro">
-                Ready to discuss your AI project? Reach out through any of these channels and I'll get back to you promptly.
-              </p>
-              
-              <div className="contact-methods">
-                <div className="contact-method">
-                  <div className="icon-wrapper">
-                    <FaEnvelope className="contact-icon" />
-                  </div>
-                  <div className="contact-details">
-                    <h3>Email</h3>
-                    <p><a href="mailto:blake@harknessai.nz">blake@harknessai.nz</a></p>
-                  </div>
-                </div>
-
-                <div className="contact-method">
-                  <div className="icon-wrapper">
-                    <FaLinkedin className="contact-icon" />
-                  </div>
-                  <div className="contact-details">
-                    <h3>LinkedIn</h3>
-                    <p><a href="https://www.linkedin.com/in/blake-harkness/" target="_blank" rel="noopener noreferrer">Blake Harkness</a></p>
-                  </div>
-                </div>
-                
-                <div className="contact-method">
-                  <div className="icon-wrapper">
-                    <FaMapMarkerAlt className="contact-icon" />
-                  </div>
-                  <div className="contact-details">
-                    <h3>Location</h3>
-                    <p>Christchurch, New Zealand</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="availability">
-                <h3>Availability</h3>
-                <p>I'm currently available for new projects and consulting engagements.</p>
-                <div className="availability-indicator">
-                  <div className="status-dot"></div>
-                  <span className="status-text">Available for Work</span>
-                </div>
-              </div>
-            </motion.div>
-            
+          <div className="contact-grid-full">
             {/* Contact Form */}
             <motion.div 
               className="contact-form-container"
@@ -213,41 +182,39 @@ const ContactPage: React.FC = () => {
                   
                   <div className="form-group">
                     <label htmlFor="subject">Subject</label>
-                    <select
+                    <input
+                      type="text"
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                    >
-                      <option value="" disabled>Select a subject</option>
-                      <option value="Project Inquiry">Project Inquiry</option>
-                      <option value="Consultation Request">Consultation Request</option>
-                      <option value="Partnership Opportunity">Partnership Opportunity</option>
-                      <option value="General Question">General Question</option>
-                    </select>
+                      placeholder="Project Inquiry"
+                    />
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor="message">Your Message</label>
+                    <label htmlFor="message">Message</label>
                     <textarea
                       id="message"
                       name="message"
+                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
                       required
                       placeholder="Tell me about your project or inquiry..."
-                      rows={6}
                     ></textarea>
                   </div>
                   
-                  <button 
-                    type="submit" 
-                    className="submit-button"
-                    disabled={isSubmitting}
-                  >
+                  <button type="submit" className="submit-button" disabled={isSubmitting}>
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
+                  
+                  {formStatus.submitted && !formStatus.success && (
+                    <div className="error-message">
+                      {formStatus.message}
+                    </div>
+                  )}
                 </form>
               )}
             </motion.div>
@@ -286,7 +253,7 @@ const ContactPage: React.FC = () => {
           >
             <motion.div className="faq-item" variants={fadeIn}>
               <h3>What is your typical process for new projects?</h3>
-              <p>I follow a structured approach that begins with a discovery call to understand your needs, followed by a proposal outlining scope, timeline, and cost. Once approved, we move into development with regular check-ins and iterations until the final delivery.</p>
+              <p>I follow a structured approach that begins with a discovery call to understand your needs, followed by a proposal outlining scope, timeline, and cost. Once approved, I move into development with regular check-ins and iterations until the final delivery.</p>
             </motion.div>
             
             <motion.div className="faq-item" variants={fadeIn}>
@@ -296,7 +263,7 @@ const ContactPage: React.FC = () => {
             
             <motion.div className="faq-item" variants={fadeIn}>
               <h3>How do we get started?</h3>
-              <p>Simply reach out through the contact form or email me directly. We'll schedule an initial consultation to discuss your project needs and determine if we're a good fit to work together.</p>
+              <p>Simply reach out through the contact form above. I'll schedule an initial consultation to discuss your project needs and determine if we're a good fit to work together.</p>
             </motion.div>
             
             <motion.div className="faq-item" variants={fadeIn}>

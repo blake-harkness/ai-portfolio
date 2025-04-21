@@ -4,7 +4,7 @@ import '../styles/Hero.css';
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   const [typedText, setTypedText] = useState('');
-  const fullText = 'Advanced AI Solutions for Business';
+  const fullText = 'AI Solutions in New Zealand';
   const typingSpeed = 80;
   
   useEffect(() => {
@@ -36,15 +36,15 @@ const Hero = () => {
         </h1>
         
         <p className="hero-tagline">
-          Leveraging artificial intelligence to transform your business operations and drive innovation
+          Based in Christchurch, I help businesses across New Zealand transform their operations with custom AI solutions
         </p>
         
         <div className="cta-container">
           <a href="how-i-can-help" className="button button-primary">
-            View Our Services
+            My AI Services
           </a>
           <a href="contact" className="button button-secondary">
-            Get in Touch
+            Contact Me
           </a>
         </div>
       </div>
