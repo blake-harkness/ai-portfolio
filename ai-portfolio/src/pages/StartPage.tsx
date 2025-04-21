@@ -1,4 +1,4 @@
-import { useState, useRef, ReactNode } from 'react';
+import { useState, useRef } from 'react';
 import '../styles/GuidePage.css';
 import emailjs from '@emailjs/browser';
 import { FaLinkedin, FaYoutube } from 'react-icons/fa';
