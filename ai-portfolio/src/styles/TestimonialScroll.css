@@ -1,0 +1,136 @@
+.testimonial-scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+.testimonial-scroll-track {
+  display: flex;
+  animation: scroll 60s linear infinite;
+  width: max-content;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+/* Pause animation on hover */
+.testimonial-scroll-container:hover .testimonial-scroll-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* This should be adjusted based on the total width of all testimonial cards */
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-card {
+  min-width: 300px;
+  max-width: 350px;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+  min-height: 220px;
+}
+
+.testimonial-card .quote-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  opacity: 0.2;
+  margin-bottom: 1rem;
+  align-self: center;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-author {
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 1rem;
+}
+
+.author-details {
+  text-align: center;
+}
+
+.author-details h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+
+.author-details p {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Hover animation */
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    min-width: 250px;
+    max-width: 300px;
+    padding: 1.5rem;
+  }
+  
+  .testimonial-text {
+    font-size: 0.9rem;
+  }
+  
+  .author-details h4 {
+    font-size: 1rem;
+  }
+  
+  .author-details p {
+    font-size: 0.8rem;
+  }
+  
+  .testimonial-scroll-track {
+    animation-duration: 40s;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    min-width: 200px;
+    max-width: 250px;
+    padding: 1rem;
+    min-height: 180px;
+  }
+  
+  .testimonial-text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  
+  .testimonial-scroll-track {
+    animation-duration: 30s;
+    gap: 1rem;
+  }
+} 

@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
 import HowICanHelpPage from './pages/HowICanHelpPage';
+import ProjectsPage from './pages/ProjectsPage';
 import RoadyDemoPage from './pages/RoadyDemoPage';
 import CleanerCarsDemoPage from './pages/CleanerCarsDemoPage';
 import GuidePage from './pages/GuidePage';
@@ -31,6 +32,7 @@ function App() {
                   <Route path="/" element={<HomePage />} />
                   <Route path="/about" element={<Navigate to="/" replace />} />
                   <Route path="/how-i-can-help" element={<HowICanHelpPage />} />
+                  <Route path="/projects" element={<ProjectsPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/roady-demo" element={<RoadyDemoPage />} />
                   <Route path="/cleanercars-demo" element={<CleanerCarsDemoPage />} />

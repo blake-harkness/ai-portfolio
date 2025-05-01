@@ -1,0 +1,150 @@
+.testimonial-carousel {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 3rem;
+  box-shadow: var(--card-shadow);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial-carousel-inner {
+  margin-bottom: 2rem;
+}
+
+.testimonial-carousel-quote {
+  text-align: center;
+  position: relative;
+}
+
+.testimonial-carousel-quote .quote-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  opacity: 0.2;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-text {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  font-style: italic;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-author {
+  margin-top: 2rem;
+}
+
+.author-details {
+  text-align: center;
+}
+
+.author-details h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+
+.author-details p {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.carousel-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.carousel-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 1rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  opacity: 0.3;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  opacity: 0.8;
+  background: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .testimonial-carousel {
+    padding: 2rem;
+  }
+  
+  .testimonial-text {
+    font-size: 1.2rem;
+    min-height: 150px;
+  }
+  
+  .author-details h4 {
+    font-size: 1.1rem;
+  }
+  
+  .author-details p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-carousel {
+    padding: 1.5rem;
+  }
+  
+  .testimonial-text {
+    font-size: 1.1rem;
+    min-height: 180px;
+  }
+  
+  .carousel-btn {
+    font-size: 1rem;
+  }
+  
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+} 

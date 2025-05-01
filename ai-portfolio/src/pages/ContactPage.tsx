@@ -258,7 +258,7 @@ const ContactPage: React.FC = () => {
             
             <motion.div className="faq-item" variants={fadeIn}>
               <h3>Do you offer ongoing support after project completion?</h3>
-              <p>Yes, I offer various support packages to ensure your AI solution continues to perform optimally. This includes monitoring, updates, and further training of models as needed.</p>
+              <p>Yes, I offer support  to ensure your AI solution continues to perform optimally. This includes monitoring, updates, and further development as needed.</p>
             </motion.div>
             
             <motion.div className="faq-item" variants={fadeIn}>
