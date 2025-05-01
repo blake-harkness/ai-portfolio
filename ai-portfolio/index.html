@@ -18,15 +18,32 @@
     <meta property="og:image" content="https://www.harknessai.nz/og-image.jpg" />
     <meta property="og:locale" content="en_NZ" />
     
-    <!-- Fonts -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Harkness AI - AI Solutions in New Zealand" />
     <meta name="twitter:description" content="Blake Harkness provides AI solutions from Christchurch to businesses across New Zealand. Expert AI development and consulting services." />
     <meta name="twitter:image" content="https://www.harknessai.nz/og-image.jpg" />
     
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- DNS Prefetch and Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" as="style" />
+    
+    <!-- Load fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="/blake_photo.jpg" />
+    
+    <!-- Performance optimizations -->
+    <link rel="modulepreload" href="/src/main.tsx" />
+    
+    <!-- Script for adaptive loading -->
+    <script type="text/javascript" src="/preload.js"></script>
     
     <title>Harkness AI - AI Solutions in New Zealand | Based in Christchurch</title>
     

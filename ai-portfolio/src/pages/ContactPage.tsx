@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import '../styles/ContactPage.css';
-import SEOHead from '../components/SEOHead';
+import Seo from '../components/Seo';
+import { generateFAQSchema } from '../utils/schemaHelpers';
+import OptimizedImage from '../components/OptimizedImage';
+import ContactCard from '../components/ContactCard';
 
 const ContactPage: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -22,23 +25,6 @@ const ContactPage: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    // Add structured data for the contact page
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.innerHTML = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'ContactPage',
-      'name': 'Harkness AI Contact',
-      'url': 'https://www.harknessai.nz/contact',
-      'description': 'Contact Blake Harkness for AI solutions in New Zealand - based in Christchurch and serving clients across Auckland, Wellington, and nationwide.',
-      'areaServed': ['New Zealand', 'Christchurch', 'Auckland', 'Wellington'],
-    });
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -97,13 +83,34 @@ const ContactPage: React.FC = () => {
     }
   };
 
+  // FAQ data for schema
+  const faqData = [
+    {
+      question: "What is your typical process for new projects?",
+      answer: "I follow a structured approach that begins with a discovery call to understand your needs, followed by a proposal outlining scope, timeline, and cost. Once approved, I move into development with regular check-ins and iterations until the final delivery."
+    },
+    {
+      question: "Do you offer ongoing support after project completion?",
+      answer: "Yes, I offer support to ensure your AI solution continues to perform optimally. This includes monitoring, updates, and further development as needed."
+    },
+    {
+      question: "How do we get started?",
+      answer: "Simply reach out through the contact form above. I'll schedule an initial consultation to discuss your project needs and determine if we're a good fit to work together."
+    },
+    {
+      question: "What information should I prepare for our first meeting?",
+      answer: "It's helpful to have a clear idea of your business challenge, any existing solutions you've tried, and your goals for implementing AI. Don't worry if you don't have all the details - I can help guide the discovery process."
+    }
+  ];
+
   return (
     <div className="contact-page">
-      <SEOHead 
-        title="Contact Me for AI Solutions in New Zealand" 
+      <Seo 
+        title="Contact Me for AI Solutions in New Zealand"
         description="Contact Blake Harkness for AI solutions in Christchurch and across New Zealand. Specialized AI consulting and development services for NZ businesses."
+        canonical="/contact"
         keywords="Contact AI New Zealand, Christchurch AI Contact, Auckland AI Services, Wellington AI Consulting, New Zealand AI Development"
-        canonicalPath="/contact"
+        jsonLd={generateFAQSchema(faqData)}
       />
       
       {/* Hero Section */}
@@ -251,25 +258,38 @@ const ContactPage: React.FC = () => {
               }
             }}
           >
-            <motion.div className="faq-item" variants={fadeIn}>
-              <h3>What is your typical process for new projects?</h3>
-              <p>I follow a structured approach that begins with a discovery call to understand your needs, followed by a proposal outlining scope, timeline, and cost. Once approved, I move into development with regular check-ins and iterations until the final delivery.</p>
-            </motion.div>
-            
-            <motion.div className="faq-item" variants={fadeIn}>
-              <h3>Do you offer ongoing support after project completion?</h3>
-              <p>Yes, I offer support  to ensure your AI solution continues to perform optimally. This includes monitoring, updates, and further development as needed.</p>
-            </motion.div>
-            
-            <motion.div className="faq-item" variants={fadeIn}>
-              <h3>How do we get started?</h3>
-              <p>Simply reach out through the contact form above. I'll schedule an initial consultation to discuss your project needs and determine if we're a good fit to work together.</p>
-            </motion.div>
-            
-            <motion.div className="faq-item" variants={fadeIn}>
-              <h3>What information should I prepare for our first meeting?</h3>
-              <p>It's helpful to have a clear idea of your business challenge, any existing solutions you've tried, and your goals for implementing AI. Don't worry if you don't have all the details - I can help guide the discovery process.</p>
-            </motion.div>
+            {faqData.map((faq, index) => (
+              <motion.div key={index} className="faq-item" variants={fadeIn}>
+                <h3>{faq.question}</h3>
+                <p>{faq.answer}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Location information with map */}
+      <section className="location-section">
+        <div className="container">
+          <motion.div 
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <h2>Where to Find Me</h2>
+            <p>Based in Christchurch, serving clients across New Zealand</p>
+          </motion.div>
+          
+          <motion.div
+            className="location-container"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <ContactCard showMap={true} />
           </motion.div>
         </div>
       </section>

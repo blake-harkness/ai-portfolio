@@ -11,6 +11,8 @@ import RoadyDemoPage from './pages/RoadyDemoPage';
 import CleanerCarsDemoPage from './pages/CleanerCarsDemoPage';
 import GuidePage from './pages/GuidePage';
 import StartPage from './pages/StartPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 import { Analytics } from "@vercel/analytics/react"
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/roady-demo" element={<RoadyDemoPage />} />
                   <Route path="/cleanercars-demo" element={<CleanerCarsDemoPage />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                  <Route path="/terms-of-service" element={<TermsOfServicePage />} />
                 </Routes>
               </main>
               <Footer />
