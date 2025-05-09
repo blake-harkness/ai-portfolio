@@ -29,10 +29,52 @@
 }
 
 .guide-header {
-  background: linear-gradient(to right, var(--gradient-start, #3a86ff), var(--gradient-end, #8338ec));
+  background-color: #080b1a;
   color: white;
   text-align: center;
   padding: 2.5rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.guide-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(58, 134, 255, 0.2),
+    rgba(131, 56, 236, 0.2)
+  );
+  z-index: 1;
+}
+
+.guide-header .particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.guide-header .particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(rgba(58, 134, 255, 0.15) 2px, transparent 2px),
+    radial-gradient(rgba(131, 56, 236, 0.15) 2px, transparent 2px),
+    radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px, 40px 40px, 30px 30px;
+  background-position: 0 0, 30px 30px, 15px 15px;
+  animation: particleAnimation 20s linear infinite;
 }
 
 .guide-header h1 {
@@ -40,6 +82,26 @@
   margin: 0;
   font-weight: 800;
   font-family: var(--font-heading, 'Poppins', sans-serif);
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes particleAnimation {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-5px) translateX(5px);
+  }
+  50% {
+    transform: translateY(0) translateX(10px);
+  }
+  75% {
+    transform: translateY(5px) translateX(5px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
 }
 
 /* About Section - white background (first section) */
@@ -183,7 +245,7 @@
 /* Reviews Section - light blue background (fourth section) */
 .reviews-section {
   background-color: var(--bg-secondary, #f0f7ff);
-  padding: 4rem 2rem;
+  padding: 4rem 0;
   text-align: center;
 }
 
@@ -194,6 +256,7 @@
   font-family: var(--font-heading, 'Poppins', sans-serif);
   position: relative;
   display: inline-block;
+  text-align: center;
 }
 
 .reviews-section h2::after {

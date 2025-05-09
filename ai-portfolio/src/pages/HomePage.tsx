@@ -107,10 +107,10 @@ const HomePage = () => {
       </section>
       
       <section className="section testimonials-section">
-        <div className="container">
+        <div className="container testimonials-title-container">
           <h2 className="section-title">What People Say About Me</h2>
-          <TestimonialScroll />
         </div>
+        <TestimonialScroll />
       </section>
 
       <section className="section cta-section">

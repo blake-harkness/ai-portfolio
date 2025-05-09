@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaLightbulb, FaRobot, FaCode, FaChartLine, FaPen, FaCogs } from 'react-icons/fa';
+import { FaArrowRight, FaLightbulb, FaRobot, FaChartLine, FaPen, FaCogs, FaChalkboardTeacher } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../styles/HowICanHelpPage.css';
 
@@ -31,6 +31,19 @@ const HowICanHelpPage: React.FC = () => {
   const services = [
     {
       id: 1,
+      title: "AI Education & Training",
+      icon: <FaChalkboardTeacher className="service-icon" />,
+      description: "I provide AI training for New Zealand businesses, organizations and individuals, helping your team build the skills needed to leverage AI tools effectively in your workplace.",
+      benefits: [
+        "Hands-on training with practical AI tools",
+        "Customized workshops for your team",
+        "Step-by-step implementation guidance",
+        "Ongoing support as you adopt AI tools"
+      ],
+      cta: "Book AI Training"
+    },
+    {
+      id: 2,
       title: "AI Strategy Consulting",
       icon: <FaLightbulb className="service-icon" />,
       description: "Develop a comprehensive AI strategy tailored to your business needs. I'll help you identify opportunities, assess feasibility, and create a roadmap for AI implementation.",
@@ -43,7 +56,7 @@ const HowICanHelpPage: React.FC = () => {
       cta: "Schedule a Strategy Session"
     },
     {
-      id: 2,
+      id: 3,
       title: "Conversational AI Development",
       icon: <FaRobot className="service-icon" />,
       description: "Create sophisticated AI chatbots and virtual assistants that engage your customers naturally. From simple FAQ bots to complex conversational agents, I'll build solutions that enhance user experience.",
@@ -54,19 +67,6 @@ const HowICanHelpPage: React.FC = () => {
         "Multi-channel deployment (web, mobile, messaging)"
       ],
       cta: "Explore Conversational AI"
-    },
-    {
-      id: 3,
-      title: "Custom AI Solution Development",
-      icon: <FaCode className="service-icon" />,
-      description: "Transform your ideas into powerful AI applications. I specialize in developing custom AI solutions that solve specific business problems and create competitive advantages.",
-      benefits: [
-        "End-to-end development from concept to deployment",
-        "Integration with existing systems and workflows",
-        "Scalable architecture for future growth",
-        "Comprehensive documentation and knowledge transfer"
-      ],
-      cta: "Start Your AI Project"
     },
     {
       id: 4,

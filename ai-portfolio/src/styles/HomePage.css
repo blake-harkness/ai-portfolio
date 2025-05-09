@@ -368,6 +368,7 @@
   position: relative;
   overflow: hidden;
   padding: 4rem 0 5rem;
+  width: 100%;
 }
 
 .testimonials-section::before {
@@ -383,14 +384,24 @@
   z-index: 0;
 }
 
-.testimonials-section .section-title {
-  position: relative;
-  z-index: 1;
-}
-
 .testimonials-section .container {
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.testimonials-section .section-title {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 2rem;
+  display: inline-block;
+  width: auto;
+  left: auto;
+  transform: none;
 }
 
 .testimonials-grid {
@@ -790,4 +801,21 @@
   .cta-section p {
     font-size: 1.125rem;
   }
+}
+
+.testimonials-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.testimonials-title-container .section-title {
+  display: inline-block;
+  position: relative;
+  left: auto;
+  transform: none;
+  margin-left: auto;
+  margin-right: auto;
 } 

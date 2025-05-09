@@ -4,7 +4,6 @@ import emailjs from '@emailjs/browser';
 import '../styles/ContactPage.css';
 import Seo from '../components/Seo';
 import { generateFAQSchema } from '../utils/schemaHelpers';
-import OptimizedImage from '../components/OptimizedImage';
 import ContactCard from '../components/ContactCard';
 
 const ContactPage: React.FC = () => {
