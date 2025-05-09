@@ -6,30 +6,45 @@ import '../styles/HomePage.css';
 import '../styles/AboutPage.css';
 import SEOHead from '../components/SEOHead';
 import TestimonialScroll from '../components/TestimonialScroll';
+import { generateOrganizationSchema, generateLocalBusinessSchema, generateServiceSchema } from '../utils/schemaHelpers';
 
 const HomePage = () => {
   useEffect(() => {
-    // Add JSON-LD structured data for better SEO
+    // Add multiple JSON-LD structured data for better SEO
     const script = document.createElement('script');
     script.type = 'application/ld+json';
-    script.innerHTML = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      'name': 'Blake Harkness',
-      'url': 'https://www.harknessai.nz',
-      'logo': 'https://www.harknessai.nz/harkness-ai-favicon.svg',
-      'description': 'AI solutions provider in New Zealand. Expert AI services for businesses across Christchurch, Auckland, Wellington and NZ.',
-      'address': {
-        '@type': 'PostalAddress',
-        'addressLocality': 'Christchurch',
-        'addressCountry': 'New Zealand'
+    
+    // Combine multiple schema types for better SEO coverage
+    const schemas = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        'name': 'Blake Harkness',
+        'url': 'https://www.harknessai.nz',
+        'image': 'https://www.harknessai.nz/blake_photo.jpg',
+        'jobTitle': 'AI Consultant',
+        'description': 'AI solutions provider in New Zealand. Expert AI services for businesses across Christchurch, Auckland, Wellington and NZ.',
+        'address': {
+          '@type': 'PostalAddress',
+          'addressLocality': 'Christchurch',
+          'addressCountry': 'New Zealand'
+        },
+        'areaServed': ['Christchurch', 'Auckland', 'Wellington', 'New Zealand'],
+        'sameAs': [
+          'https://www.linkedin.com/in/blake-harkness/',
+          'https://www.youtube.com/@BlakeH_AI'
+        ]
       },
-      'areaServed': ['Christchurch', 'Auckland', 'Wellington', 'New Zealand'],
-      'sameAs': [
-        'https://www.linkedin.com/in/blake-harkness/',
-        'https://www.youtube.com/@BlakeH_AI'
-      ]
-    });
+      generateOrganizationSchema(),
+      generateLocalBusinessSchema(),
+      generateServiceSchema(
+        'AI Consulting Services', 
+        'Expert AI consulting and development services for businesses in Christchurch and across New Zealand.', 
+        '/how-i-can-help'
+      )
+    ];
+
+    script.innerHTML = JSON.stringify(schemas);
     document.head.appendChild(script);
 
     return () => {
@@ -59,10 +74,12 @@ const HomePage = () => {
     <div className="page home-page">
       <SEOHead 
         title="AI Solutions in New Zealand" 
-        description="I provide artificial intelligence solutions in Christchurch and across New Zealand. Expert AI consulting and development services for NZ businesses."
-        keywords="New Zealand AI, Christchurch AI, Auckland AI, Wellington AI, AI Consulting NZ, New Zealand AI Solutions, AI Development New Zealand"
+        description="Expert artificial intelligence solutions in Christchurch and across New Zealand. Professional AI consulting, development and teaching services for NZ businesses."
+        keywords="New Zealand AI, Christchurch AI, Auckland AI, Wellington AI, AI Consulting NZ, New Zealand AI Solutions, AI Development New Zealand, AI Teaching, AI Help, AI Consultant"
         canonicalPath="/"
       />
+      
+      <h1 className="visually-hidden">HarknessAI - AI Solutions in New Zealand | Based in Christchurch</h1>
       
       <Hero />
       
@@ -84,7 +101,7 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="about-image">
-                <img src="/blake_photo.jpg" alt="Blake Harkness - AI Specialist" className="profile-image" />
+                <img src="/blake_photo.jpg" alt="Blake Harkness - AI Specialist" className="profile-image" loading="eager" fetchPriority="high" />
               </div>
             </div>
           </div>

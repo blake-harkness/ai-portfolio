@@ -85,30 +85,30 @@ const ContactPage: React.FC = () => {
   // FAQ data for schema
   const faqData = [
     {
-      question: "What is your typical process for new projects?",
-      answer: "I follow a structured approach that begins with a discovery call to understand your needs, followed by a proposal outlining scope, timeline, and cost. Once approved, I move into development with regular check-ins and iterations until the final delivery."
+      question: "What is your typical process for new AI projects?",
+      answer: "I follow a structured approach that begins with a discovery call to understand your AI needs, followed by a proposal outlining scope, timeline, and cost. Once approved, I move into development with regular check-ins and iterations until the final delivery of your custom AI solution."
     },
     {
-      question: "Do you offer ongoing support after project completion?",
-      answer: "Yes, I offer support to ensure your AI solution continues to perform optimally. This includes monitoring, updates, and further development as needed."
+      question: "Do you offer ongoing AI support after project completion?",
+      answer: "Yes, I offer comprehensive AI support to ensure your solution continues to perform optimally. This includes AI model monitoring, updates, and further development as your business needs evolve."
     },
     {
-      question: "How do we get started?",
-      answer: "Simply reach out through the contact form above. I'll schedule an initial consultation to discuss your project needs and determine if we're a good fit to work together."
+      question: "How do we get started with AI consulting?",
+      answer: "Simply reach out through the contact form above. I'll schedule an initial AI consultation to discuss your project needs and determine if we're a good fit to work together on transforming your business with artificial intelligence."
     },
     {
-      question: "What information should I prepare for our first meeting?",
-      answer: "It's helpful to have a clear idea of your business challenge, any existing solutions you've tried, and your goals for implementing AI. Don't worry if you don't have all the details - I can help guide the discovery process."
+      question: "What information should I prepare for our first AI consulting meeting?",
+      answer: "It's helpful to have a clear idea of your business challenge, any existing solutions you've tried, and your goals for implementing AI. Don't worry if you don't have all the details - as an AI consultant, I can help guide the discovery process."
     }
   ];
 
   return (
     <div className="contact-page">
       <Seo 
-        title="Contact Me for AI Solutions in New Zealand"
-        description="Contact Blake Harkness for AI solutions in Christchurch and across New Zealand. Specialized AI consulting and development services for NZ businesses."
+        title="Contact AI Consultant in Christchurch | AI Services New Zealand"
+        description="Contact Blake Harkness for expert AI solutions in Christchurch and across New Zealand. Specialized AI consulting, machine learning development, and AI teaching services for NZ businesses."
         canonical="/contact"
-        keywords="Contact AI New Zealand, Christchurch AI Contact, Auckland AI Services, Wellington AI Consulting, New Zealand AI Development"
+        keywords="AI Christchurch, AI consultant New Zealand, AI teaching NZ, Christchurch AI services, AI help New Zealand, AI development Christchurch, machine learning consultant NZ, artificial intelligence New Zealand"
         jsonLd={generateFAQSchema(faqData)}
       />
       
@@ -125,7 +125,7 @@ const ContactPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            Get in Touch
+            AI Consultant in Christchurch | Contact for AI Solutions Across New Zealand
           </motion.h1>
           <motion.p 
             className="lead"
@@ -133,7 +133,7 @@ const ContactPage: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            Have a project in mind or want to explore how AI can transform your business? I provide AI services across New Zealand from my base in Christchurch.
+            Have an AI project in mind or want to explore how artificial intelligence can transform your New Zealand business? As an experienced AI consultant based in Christchurch, I provide AI development services and AI teaching across New Zealand including Auckland and Wellington.
           </motion.p>
         </div>
       </section>
@@ -150,7 +150,7 @@ const ContactPage: React.FC = () => {
               viewport={{ once: true }}
               variants={fadeIn}
             >
-              <h2>Send Me a Message</h2>
+              <h2>Contact for AI Consulting and Development Services</h2>
               
               {formStatus.submitted && formStatus.success ? (
                 <div className="form-success-message">
@@ -195,7 +195,7 @@ const ContactPage: React.FC = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      placeholder="Project Inquiry"
+                      placeholder="AI Project Inquiry"
                     />
                   </div>
                   
@@ -208,7 +208,7 @@ const ContactPage: React.FC = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      placeholder="Tell me about your project or inquiry..."
+                      placeholder="Tell me about your AI project or inquiry..."
                     ></textarea>
                   </div>
                   
@@ -238,8 +238,8 @@ const ContactPage: React.FC = () => {
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            <h2>Frequently Asked Questions</h2>
-            <p>Answers to common questions about working with me</p>
+            <h2>AI Consulting FAQ - New Zealand</h2>
+            <p>Common questions about AI services and consulting in Christchurch and across NZ</p>
           </motion.div>
           
           <motion.div 
@@ -277,8 +277,8 @@ const ContactPage: React.FC = () => {
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            <h2>Where to Find Me</h2>
-            <p>Based in Christchurch, serving clients across New Zealand</p>
+            <h2>AI Consultant Located in Christchurch</h2>
+            <p>Providing AI development and teaching services to clients in Auckland, Wellington, and throughout New Zealand</p>
           </motion.div>
           
           <motion.div

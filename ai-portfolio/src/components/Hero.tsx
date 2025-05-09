@@ -30,10 +30,10 @@ const Hero = () => {
   return (
     <section ref={heroRef} id="home" className="hero">
       <div className="hero-content">
-        <h1 className="hero-title">
+        <h2 className="hero-title">
           <span className="name">Harkness<span className="ai-accent">AI</span></span>
           <span className="title">{typedText}<span className="cursor">|</span></span>
-        </h1>
+        </h2>
         
         <p className="hero-tagline">
           Based in Christchurch, I help businesses across New Zealand transform their operations with custom AI solutions
