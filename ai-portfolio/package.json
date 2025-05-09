@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate-sitemap": "node generate-sitemap.js",
+    "generate-sitemap": "next-sitemap --config next-sitemap.config.js",
     "postbuild": "npm run generate-sitemap",
     "schema-test": "npx structured-data-testing-tool --url https://www.harknessai.nz",
     "lighthouse": "lighthouse https://www.harknessai.nz --output html --output-path ./lighthouse-report.html --view --preset=desktop --throttling.cpuSlowdownMultiplier=2",
@@ -46,7 +46,10 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "lighthouse": "^11.5.0",
+    "next-sitemap": "^4.2.3",
     "structured-data-testing-tool": "^4.5.0",
+    "transform-react-pure-class-components": "^1.0.2",
+    "transform-react-remove-prop-types": "^0.4.24",
     "typescript": "~5.0.2",
     "vite": "^4.4.5"
   }

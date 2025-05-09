@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
-const config = {
+module.exports = {
   siteUrl: 'https://www.harknessai.nz',
   generateRobotsTxt: true,
   changefreq: 'weekly',
@@ -45,6 +45,4 @@ const config = {
       lastmod: new Date().toISOString(),
     };
   },
-};
-
-export default config; 
+}; 
