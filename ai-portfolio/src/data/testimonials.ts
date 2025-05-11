@@ -16,27 +16,20 @@ export const testimonials = [
   },
   {
     id: 3,
-    quote: "Seeing how quick you can build a useful chatbot has really opened my eyes, thank you!",
-    author: "Dave Thompson",
-    position: "Business Owner",
-    image: "/testimonial-3.jpg"
-  },
-  {
-    id: 4,
     quote: "Super cool demo, Blake — I love how you broke this down so fast and clean.",
     author: "Zach Ross",
     position: "Developer",
     image: "/testimonial-4.jpg"
   },
   {
-    id: 5,
+    id: 4,
     quote: "Hey Blake, thanks for sharing this, really helpful for my son doing NCEA1.",
     author: "Zac Pullen",
     position: "Parent",
     image: "/testimonial-5.jpg"
   },
   {
-    id: 6,
+    id: 5,
     quote: "Amazing man I love these kind of tutorials",
     author: "Shoaib Hussain",
     position: "Student",
