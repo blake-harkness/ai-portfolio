@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import '../styles/GuidePage.css';
 import emailjs from '@emailjs/browser';
 import { FaLinkedin, FaYoutube } from 'react-icons/fa';
+import TestimonialScroll from '../components/TestimonialScroll';
 
 const StartPage = () => {
   // Form references
@@ -184,13 +185,13 @@ const StartPage = () => {
           
           <div className="project-card">
             <div className="project-image">
-              <img src="/datasift.png" alt="DataSift" />
+              <img src="/tupuna.png" alt="Tupuna" />
             </div>
             <div className="project-content">
-              <h3>DataSift</h3>
-              <p>An AI-powered data analysis tool that executes Python code on CSV files to eliminate hallucinations and deliver accurate answers to mathematical and statistical questions about the data.</p>
+              <h3>Vaka o Tūpuna</h3>
+              <p>A web app that helps families record, preserve, and explore their elders' cultural knowledge through guided interviews and AI-powered insights.</p>
               <div className="project-button-container">
-                <span className="project-link wip-button">WIP</span>
+                <a href="https://tupuna.app" target="_blank" rel="noopener noreferrer" className="project-link">Record your family</a>
               </div>
             </div>
           </div>
@@ -220,47 +221,7 @@ const StartPage = () => {
         </div>
       </section>
 
-      <section className="reviews-section">
-        <h2>What People Say About Me</h2>
-        <div className="reviews-grid">
-          <div className="review-card">
-            <p>"Nice work Blake. A great demo of how simple it is these days to get underway with chatbots."</p>
-            <div className="reviewer">— Mark Donovan</div>
-          </div>
-          <div className="review-card">
-            <p>"Finding alternative products with Glow4Less has helped me save money. It was easy as to use."</p>
-            <div className="reviewer">— Dannielle Innes</div>
-          </div>
-          <div className="review-card">
-            <p>"Seeing how quick you can build a useful chatbot has really opened my eyes, thank you!"</p>
-            <div className="reviewer">— Dave Thompson</div>
-          </div>
-          <div className="review-card">
-            <p>"Super cool demo, Blake — I love how you broke this down so fast and clean."</p>
-            <div className="reviewer">— Zach Ross</div>
-          </div>
-          <div className="review-card">
-            <p>"Hey Blake, thanks for sharing this, really helpful for my son doing NCEA1."</p>
-            <div className="reviewer">— Zac Pullen</div>
-          </div>
-          <div className="review-card">
-            <p>"Amazing man I love these kind of tutorials"</p>
-            <div className="reviewer">— Shoaib Hussain</div>
-          </div>
-          <div className="review-card">
-            <p>"Awesome share Blake. Appreciate it"</p>
-            <div className="reviewer">— Bruce Waller</div>
-          </div>
-          <div className="review-card">
-            <p>"Had a 30min teams call that really opened my eyes to the AI world. Thank you Blake!"</p>
-            <div className="reviewer">— Brittany Brand</div>
-          </div>
-          <div className="review-card">
-            <p>"Valuable share, thanks a bunch Blake"</p>
-            <div className="reviewer">— David Wagner</div>
-          </div>
-        </div>
-      </section>
+      <TestimonialScroll pageClassName="start-page" />
 
       <section id="contact-section" className="contact-section">
         <h2>Contact Me</h2>

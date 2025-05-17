@@ -2,6 +2,7 @@ import { useState, useRef, ReactNode } from 'react';
 import '../styles/GuidePage.css';
 import emailjs from '@emailjs/browser';
 import { FaLinkedin, FaYoutube } from 'react-icons/fa';
+import TestimonialScroll from '../components/TestimonialScroll';
 
 const GuidePage = () => {
   const [email, setEmail] = useState('');
@@ -255,102 +256,66 @@ const GuidePage = () => {
               <li>Get exclusive insights from my AI projects & experiments</li>
             </ul>
           </div>
-          <div 
-            className={`subscribe-form ${isHighlightingSubscribe ? 'highlight-subscribe' : ''}`}
-            ref={subscribeFormContainerRef}
-          >
-            <form ref={subscribeFormRef} onSubmit={handleSubmit}>
-              <input 
-                type="email" 
-                name="email"
-                placeholder="Your email address" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required 
-                disabled={isSubmitting}
-                className={isHighlightingSubscribe ? 'highlight-input' : ''}
-              />
-              <input
-                type="hidden"
-                name="to_name"
-                value="Blake"
-              />
-              <input
-                type="hidden"
-                name="from_name"
-                value={email.split('@')[0] || 'Subscriber'}
-              />
-              <input
-                type="hidden"
-                name="message"
-                value="New subscription to AI guides and newsletter"
-              />
-              <input
-                type="hidden"
-                name="reply_to"
-                value={email}
-              />
-              <input
-                type="hidden"
-                name="subject"
-                value="New AI Guide Subscription"
-              />
-              <button 
-                type="submit" 
-                className={`subscribe-btn ${isHighlightingSubscribe ? 'highlight-button' : ''}`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-              </button>
-              {submitMessage && (
-                <div className={`submit-message ${messageType}`}>
-                  {submitMessage}
-                </div>
-              )}
-            </form>
-          </div>
         </div>
       </section>
 
-      <section className="reviews-section">
-        <h2>What People Say About Me</h2>
-        <div className="reviews-grid">
-          <div className="review-card">
-            <p>"Nice work Blake. A great demo of how simple it is these days to get underway with chatbots."</p>
-            <div className="reviewer">— Mark Donovan</div>
-          </div>
-          <div className="review-card">
-            <p>"Finding alternative products with Glow4Less has helped me save money. It was easy as to use."</p>
-            <div className="reviewer">— Dannielle Innes</div>
-          </div>
-          <div className="review-card">
-            <p>"Seeing how quick you can build a useful chatbot has really opened my eyes, thank you!"</p>
-            <div className="reviewer">— Dave Thompson</div>
-          </div>
-          <div className="review-card">
-            <p>"Super cool demo, Blake — I love how you broke this down so fast and clean."</p>
-            <div className="reviewer">— Zach Ross</div>
-          </div>
-          <div className="review-card">
-            <p>"Hey Blake, thanks for sharing this, really helpful for my son doing NCEA1."</p>
-            <div className="reviewer">— Zac Pullen</div>
-          </div>
-          <div className="review-card">
-            <p>"Amazing man I love these kind of tutorials"</p>
-            <div className="reviewer">— Shoaib Hussain</div>
-          </div>
-          <div className="review-card">
-            <p>"Awesome share Blake. Appreciate it"</p>
-            <div className="reviewer">— Bruce Waller</div>
-          </div>
-          <div className="review-card">
-            <p>"Had a 30min teams call that really opened my eyes to the AI world. Thank you Blake!"</p>
-            <div className="reviewer">— Brittany Brand</div>
-          </div>
-          <div className="review-card">
-            <p>"Valuable share, thanks a bunch Blake"</p>
-            <div className="reviewer">— David Wagner</div>
-          </div>
+      {/* Add TestimonialScroll before the subscribe section */}
+      <TestimonialScroll pageClassName="guide-page" />
+
+      <section 
+        ref={subscribeFormContainerRef} 
+        className={`subscribe-section ${isHighlightingSubscribe ? 'highlight' : ''}`}
+      >
+        <div className="subscribe-form">
+          <form ref={subscribeFormRef} onSubmit={handleSubmit}>
+            <input 
+              type="email" 
+              name="email"
+              placeholder="Your email address" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+              disabled={isSubmitting}
+              className={isHighlightingSubscribe ? 'highlight-input' : ''}
+            />
+            <input
+              type="hidden"
+              name="to_name"
+              value="Blake"
+            />
+            <input
+              type="hidden"
+              name="from_name"
+              value={email.split('@')[0] || 'Subscriber'}
+            />
+            <input
+              type="hidden"
+              name="message"
+              value="New subscription to AI guides and newsletter"
+            />
+            <input
+              type="hidden"
+              name="reply_to"
+              value={email}
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="New AI Guide Subscription"
+            />
+            <button 
+              type="submit" 
+              className={`subscribe-btn ${isHighlightingSubscribe ? 'highlight-button' : ''}`}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+            </button>
+            {submitMessage && (
+              <div className={`submit-message ${messageType}`}>
+                {submitMessage}
+              </div>
+            )}
+          </form>
         </div>
       </section>
 
